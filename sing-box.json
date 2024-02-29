@@ -283,7 +283,6 @@
       "tag": "cn",
       "type": "selector",
       "outbounds": [
-        "proxy",
         "direct"
       ],
       "default": "direct"
