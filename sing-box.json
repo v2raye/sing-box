@@ -7,7 +7,7 @@
     },
     "servers": [
       {
-        "tag": "Cloudflare",
+        "tag": "cloudflare",
         "address": "https://1.1.1.1/dns-query",
         "detour": "Proxy"
       },
@@ -46,10 +46,10 @@
       },
       {
         "rule_set": "geolocation-!cn",
-        "server": "Cloudflare"
+        "server": "Google"
       }
     ],
-    "final": "alidns",
+    "Final": "alidns",
     "independent_cache": true
   },
   "route": {
@@ -68,7 +68,7 @@
       },
       {
         "clash_mode": "Global",
-        "outbound": "GLOBAL"
+        "outbound": "Global"
       },
       {
         "rule_set": "bilibili",
@@ -99,8 +99,8 @@
         "outbound": "Telegram"
       },
       {
-        "rule_set": "cn",
-        "outbound": "cn"
+        "rule_set": "CN",
+        "outbound": "CN"
       },
       {
         "rule_set": "geolocation-!cn",
@@ -130,7 +130,7 @@
         "download_detour": "Proxy"
       },
       {
-        "tag": "cn",
+        "tag": "CN",
         "type": "remote",
         "format": "binary",
         "url": "https://github.com/MetaCubeX/meta-rules-dat/raw/sing/geo-lite/mixed/cn.srs",
@@ -179,7 +179,7 @@
         "download_detour": "Proxy"
       }
     ],
-    "final": "final",
+    "Final": "Final",
     "auto_detect_interface": true
   },
   "outbounds": [
@@ -284,7 +284,7 @@
       "default": "United States"
     },
     {
-      "tag": "cn",
+      "tag": "CN",
       "type": "selector",
       "outbounds": [
         "Proxy",
@@ -293,7 +293,7 @@
       "default": "direct"
     },
     {
-      "tag": final",
+      "tag": "Final",
       "type": "selector",
       "outbounds": [
         "Proxy",
@@ -327,7 +327,7 @@
       "outbounds": []
     },
     {
-      "tag": "GLOBAL",
+      "tag": "Global",
       "type": "selector",
       "outbounds": [
         "direct",
