@@ -293,7 +293,7 @@
       "default": "direct"
     },
     {
-      "tag": "final",
+      "tag": "Final",
       "type": "selector",
       "outbounds": [
         "Proxy",
