@@ -97,10 +97,6 @@
       {
         "rule_set": "Telegram",
         "outbound": "Telegram"
-      },
-      {
-        "rule_set": "Microsoft",
-        "outbound": "Microsoft"
       },     
       {
         "rule_set": "cn",
@@ -174,14 +170,7 @@
         "format": "binary",
         "url": "https://github.com/MetaCubeX/meta-rules-dat/raw/sing/geo-lite/mixed/telegram.srs",
         "download_detour": "Proxy"
-      },
-      {
-        "tag": "Microsoft",
-        "type": "remote",
-        "format": "binary",
-        "url": "https://raw.githubusercontent.com/Toperlock/sing-box-geosite/blob/main/rule/Microsoft.srs",
-        "download_detour": "Proxy"
-      },     
+      },   
       {
         "tag": "YouTube",
         "type": "remote",
@@ -245,19 +234,6 @@
         "United States"
       ],
       "default": "Singapore"
-    },
-    {
-      "tag": "Microsoft",
-      "type": "selector",
-      "outbounds": [
-        "direct",
-        "Hong Kong",
-        "Taiwan",
-        "Japan",
-        "Singapore",
-        "United States"
-      ],
-      "default": "direct"
     },
     {
       "tag": "bilibili",
