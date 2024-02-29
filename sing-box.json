@@ -7,13 +7,13 @@
     },
     "servers": [
       {
-        "tag": "cloudflare",
-        "address": "https://1.1.1.1/dns-query",
-        "detour": "Proxy"
+        "tag": "google",
+        "address": "https://8.8.8.8/dns-query",
+        "detour": "proxy"
       },
       {
-        "tag": "ali",
-        "address": "https://223.5.5.5/dns-query",
+        "tag": "tx",
+        "address": "https://120.53.53.53/dns-query",
         "detour": "direct"
       },
       {
@@ -24,12 +24,12 @@
     "rules": [
       {
         "outbound": "any",
-        "server": "ali",
+        "server": "tx",
         "disable_cache": true
       },
       {
         "clash_mode": "Direct",
-        "server": "ali"
+        "server": "tx"
       },
       {
         "clash_mode": "Global",
@@ -46,10 +46,10 @@
       },
       {
         "rule_set": "geolocation-!cn",
-        "server": "cloudflare"
+        "server": "google"
       }
     ],
-    "final": "ali",
+    "final": "tx",
     "independent_cache": true
   },
   "route": {
@@ -71,32 +71,32 @@
         "outbound": "GLOBAL"
       },
       {
-        "rule_set": "Bilibili",
-        "outbound": "Bilibili"
+        "rule_set": "bilibili",
+        "outbound": "bilibili"
       },
       {
-        "rule_set": "Netflix",
-        "outbound": "Netflix"
+        "rule_set": "netflix",
+        "outbound": "netflix"
       },
       {
-        "rule_set": "Youtube",
-        "outbound": "Youtube"
+        "rule_set": "youtube",
+        "outbound": "youtube"
       },
       {
-        "rule_set": "Openai",
-        "outbound": "Openai"
+        "rule_set": "openai",
+        "outbound": "openai"
       },
       {
-        "rule_set": "Google",
-        "outbound": "Google"
+        "rule_set": "google",
+        "outbound": "google"
       },
       {
-        "rule_set": "Apple",
-        "outbound": "Apple"
+        "rule_set": "apple",
+        "outbound": "apple"
       },
       {
-        "rule_set": "Telegram",
-        "outbound": "Telegram"
+        "rule_set": "telegram",
+        "outbound": "telegram"
       },
       {
         "rule_set": "cn",
@@ -104,7 +104,7 @@
       },
       {
         "rule_set": "geolocation-!cn",
-        "outbound": "Proxy"
+        "outbound": "proxy"
       },
       {
         "inbound": [
@@ -116,28 +116,28 @@
     ],
     "rule_set": [
       {
-        "tag": "Apple",
+        "tag": "apple",
         "type": "remote",
         "format": "binary",
         "url": "https://github.com/MetaCubeX/meta-rules-dat/raw/sing/geo-lite/mixed/apple.srs",
-        "download_detour": "Proxy"
+        "download_detour": "proxy"
       },
       {
-        "tag": "Bilibili",
+        "tag": "bilibili",
         "type": "remote",
         "format": "binary",
         "url": "https://github.com/MetaCubeX/meta-rules-dat/raw/sing/geo-lite/mixed/bilibili.srs",
-        "download_detour": "Proxy"
+        "download_detour": "proxy"
       },
       {
         "tag": "cn",
         "type": "remote",
         "format": "binary",
         "url": "https://github.com/MetaCubeX/meta-rules-dat/raw/sing/geo-lite/mixed/cn.srs",
-        "download_detour": "Proxy"
+        "download_detour": "proxy"
       },
       {
-        "tag": "Google",
+        "tag": "google",
         "type": "remote",
         "format": "binary",
         "url": "https://github.com/MetaCubeX/meta-rules-dat/raw/sing/geo-lite/mixed/google.srs",
@@ -148,35 +148,35 @@
         "type": "remote",
         "format": "binary",
         "url": "https://github.com/MetaCubeX/meta-rules-dat/raw/sing/geo/geosite/geolocation-!cn.srs",
-        "download_detour": "Proxy"
+        "download_detour": "proxy"
       },
       {
-        "tag": "Netflix",
+        "tag": "netflix",
         "type": "remote",
         "format": "binary",
         "url": "https://github.com/MetaCubeX/meta-rules-dat/raw/sing/geo-lite/mixed/netflix.srs",
-        "download_detour": "Proxy"
+        "download_detour": "proxy"
       },
       {
-        "tag": "Openai",
+        "tag": "openai",
         "type": "remote",
         "format": "binary",
         "url": "https://github.com/MetaCubeX/meta-rules-dat/raw/sing/geo/geosite/openai.srs",
-        "download_detour": "Proxy"
+        "download_detour": "proxy"
       },
       {
-        "tag": "Telegram",
+        "tag": "telegram",
         "type": "remote",
         "format": "binary",
         "url": "https://github.com/MetaCubeX/meta-rules-dat/raw/sing/geo-lite/mixed/telegram.srs",
-        "download_detour": "Proxy"
+        "download_detour": "proxy"
       },
       {
-        "tag": "Youtube",
+        "tag": "youtube",
         "type": "remote",
         "format": "binary",
         "url": "https://github.com/MetaCubeX/meta-rules-dat/raw/sing/geo-lite/geosite/youtube.srs",
-        "download_detour": "Proxy"
+        "download_detour": "proxy"
       }
     ],
     "final": "final",
@@ -184,107 +184,111 @@
   },
   "outbounds": [
     {
-      "tag": "Proxy",
+      "tag": "proxy",
       "type": "selector",
       "outbounds": [
-        "𝐇𝐨𝐧𝐠 𝐊𝐨𝐧𝐠",
-        "𝐓𝐚𝐢𝐰𝐚𝐧",
-        "𝐉𝐚𝐩𝐚𝐧",
-        "𝐒𝐢𝐧𝐠𝐚𝐩𝐨𝐫𝐞",
-        "𝐀𝐦𝐞𝐫𝐢𝐜𝐚",
+        "hk",
+        "tw",
+        "jp",
+        "sg",
+        "us",
         "direct"
       ],
-      "default": "𝐓𝐚𝐢𝐰𝐚𝐧"
+      "default": "tw"
     },
     {
-      "tag": "Google",
+      "tag": "google",
       "type": "selector",
       "outbounds": [
-        "𝐇𝐨𝐧𝐠 𝐊𝐨𝐧𝐠",
-        "𝐓𝐚𝐢𝐰𝐚𝐧",
-        "𝐉𝐚𝐩𝐚𝐧",
-        "𝐒𝐢𝐧𝐠𝐚𝐩𝐨𝐫𝐞",
-        "𝐀𝐦𝐞𝐫𝐢𝐜𝐚"
+        "proxy",
+        "hk",
+        "tw",
+        "jp",
+        "sg",
+        "us"
       ],
-      "default": "𝐓𝐚𝐢𝐰𝐚𝐧"
+      "default": "proxy"
     },
     {
-      "tag": "Apple",
+      "tag": "apple",
       "type": "selector",
       "outbounds": [
-        "𝐇𝐨𝐧𝐠 𝐊𝐨𝐧𝐠",
-        "𝐓𝐚𝐢𝐰𝐚𝐧",
-        "𝐉𝐚𝐩𝐚𝐧",
-        "𝐒𝐢𝐧𝐠𝐚𝐩𝐨𝐫𝐞",
-        "𝐀𝐦𝐞𝐫𝐢𝐜𝐚",
-        "direct"
+        "proxy",
+        "direct",
+        "hk",
+        "tw",
+        "jp",
+        "sg",
+        "us"
       ],
       "default": "direct"
     },
     {
-      "tag": "Telegram",
+      "tag": "telegram",
       "type": "selector",
       "outbounds": [
-        "𝐇𝐨𝐧𝐠 𝐊𝐨𝐧𝐠",
-        "𝐓𝐚𝐢𝐰𝐚𝐧",
-        "𝐉𝐚𝐩𝐚𝐧",
-        "𝐒𝐢𝐧𝐠𝐚𝐩𝐨𝐫𝐞",
-        "𝐀𝐦𝐞𝐫𝐢𝐜𝐚"
+        "hk",
+        "tw",
+        "jp",
+        "sg",
+        "us"
       ],
-      "default": "𝐒𝐢𝐧𝐠𝐚𝐩𝐨𝐫𝐞"
+      "default": "sg"
     },
     {
-      "tag": "Bilibili",
+      "tag": "bilibili",
       "type": "selector",
       "outbounds": [
-        "𝐇𝐨𝐧𝐠 𝐊𝐨𝐧𝐠",
-        "𝐓𝐚𝐢𝐰𝐚𝐧"
-        "direct"
+        "direct",
+        "hk",
+        "tw"
       ],
       "default": "direct"
     },
     {
-      "tag": "Netflix",
+      "tag": "netflix",
       "type": "selector",
       "outbounds": [
-        "𝐇𝐨𝐧𝐠 𝐊𝐨𝐧𝐠",
-        "𝐓𝐚𝐢𝐰𝐚𝐧",
-        "𝐉𝐚𝐩𝐚𝐧",
-        "𝐒𝐢𝐧𝐠𝐚𝐩𝐨𝐫𝐞",
-        "𝐀𝐦𝐞𝐫𝐢𝐜𝐚"
+        "proxy",
+        "hk",
+        "tw",
+        "jp",
+        "sg",
+        "us"
       ],
-      "default": "𝐒𝐢𝐧𝐠𝐚𝐩𝐨𝐫𝐞"
+      "default": "sg"
     },
     {
-      "tag": "Youtube",
+      "tag": "youtube",
       "type": "selector",
       "outbounds": [
-        "𝐇𝐨𝐧𝐠 𝐊𝐨𝐧𝐠",
-        "𝐓𝐚𝐢𝐰𝐚𝐧",
-        "𝐉𝐚𝐩𝐚𝐧",
-        "𝐒𝐢𝐧𝐠𝐚𝐩𝐨𝐫𝐞",
-        "𝐀𝐦𝐞𝐫𝐢𝐜𝐚"
+        "proxy",
+        "hk",
+        "tw",
+        "jp",
+        "sg",
+        "us"
       ],
-      "default": "𝐓𝐚𝐢𝐰𝐚𝐧"
+      "default": "proxy"
     },
     {
-      "tag": "Openai",
+      "tag": "openai",
       "type": "selector",
       "outbounds": [
-        "𝐇𝐨𝐧𝐠 𝐊𝐨𝐧𝐠",
-        "𝐓𝐚𝐢𝐰𝐚𝐧",
-        "𝐉𝐚𝐩𝐚𝐧",
-        "𝐒𝐢𝐧𝐠𝐚𝐩𝐨𝐫𝐞",
-        "𝐀𝐦𝐞𝐫𝐢𝐜𝐚"
+        "hk",
+        "tw",
+        "jp",
+        "sg",
+        "us"
       ],
-      "default": "𝐀𝐦𝐞𝐫𝐢𝐜𝐚"
+      "default": "us"
     },
     {
       "tag": "cn",
       "type": "selector",
       "outbounds": [
-        "direct",
-        "proxy"
+        "proxy",
+        "direct"
       ],
       "default": "direct"
     },
@@ -292,33 +296,33 @@
       "tag": "final",
       "type": "selector",
       "outbounds": [
-        "Proxy",
+        "proxy",
         "direct"
       ],
-      "default": "Proxy"
+      "default": "proxy"
     },
     {
-      "tag": "𝐇𝐨𝐧𝐠 𝐊𝐨𝐧𝐠",
+      "tag": "hk",
       "type": "selector",
       "outbounds": []
     },
     {
-      "tag": "𝐓𝐚𝐢𝐰𝐚𝐧",
+      "tag": "tw",
       "type": "selector",
       "outbounds": []
     },
     {
-      "tag": "𝐉𝐚𝐩𝐚𝐧",
+      "tag": "jp",
       "type": "selector",
       "outbounds": []
     },
     {
-      "tag": "𝐒𝐢𝐧𝐠𝐚𝐩𝐨𝐫𝐞",
+      "tag": "sg",
       "type": "selector",
       "outbounds": []
     },
     {
-      "tag": "𝐀𝐦𝐞𝐫𝐢𝐜𝐚",
+      "tag": "us",
       "type": "selector",
       "outbounds": []
     },
@@ -327,11 +331,12 @@
       "type": "selector",
       "outbounds": [
         "direct",
-        "𝐇𝐨𝐧𝐠 𝐊𝐨𝐧𝐠",
-        "𝐓𝐚𝐢𝐰𝐚𝐧",
-        "𝐉𝐚𝐩𝐚𝐧",
-        "𝐒𝐢𝐧𝐠𝐚𝐩𝐨𝐫𝐞",
-        "𝐀𝐦𝐞𝐫𝐢𝐜𝐚"
+        "proxy",
+        "hk",
+        "tw",
+        "jp",
+        "sg",
+        "us"
       ],
       "default": "direct"
     },
@@ -388,7 +393,7 @@
       "external_controller": "127.0.0.1:9090",
       "external_ui": "ui",
       "external_ui_download_url": "https://github.com/MetaCubeX/metacubexd/archive/refs/heads/gh-pages.zip",
-      "external_ui_download_detour": "Proxy"
+      "external_ui_download_detour": "proxy"
     },
     "cache_file": {
       "enabled": true,
@@ -400,3 +405,4 @@
     "level": "debug",
     "timestamp": true
   }
+}
