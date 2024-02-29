@@ -49,7 +49,7 @@
         "server": "Clouflare"
       }
     ],
-    "final": "ali",
+    "Final": "ali",
     "independent_cache": true
   },
   "route": {
@@ -179,7 +179,7 @@
         "download_detour": "Proxy"
       }
     ],
-    "final": "final",
+    "Final": "Final",
     "auto_detect_interface": true
   },
   "outbounds": [
@@ -293,7 +293,7 @@
       "default": "direct"
     },
     {
-      "tag": "final",
+      "tag": "Final",
       "type": "selector",
       "outbounds": [
         "Proxy",
