@@ -14,7 +14,7 @@
       {
         "tag": "alidns",
         "address": "https://223.5.5.5/dns-query",
-        "detour": "direct"
+        "detour": "Direct"
       },
       {
         "tag": "fakeip",
@@ -60,11 +60,11 @@
       },
       {
         "ip_is_private": true,
-        "outbound": "direct"
+        "outbound": "Direct"
       },
       {
         "clash_mode": "Direct",
-        "outbound": "direct"
+        "outbound": "Direct"
       },
       {
         "clash_mode": "Global",
@@ -192,7 +192,7 @@
         "Japan",
         "Singapore",
         "United States",
-        "direct"
+        "Direct"
       ],
       "default": "Taiwan"
     },
@@ -214,14 +214,14 @@
       "type": "selector",
       "outbounds": [
         "Proxy",
-        "direct",
+        "Direct",
         "Hong Kong",
         "Taiwan",
         "Japan",
         "Singapore",
         "United States"
       ],
-      "default": "direct"
+      "default": "Direct"
     },
     {
       "tag": "Telegram",
@@ -239,11 +239,11 @@
       "tag": "bilibili",
       "type": "selector",
       "outbounds": [
-        "direct",
+        "Direct",
         "Hong Kong",
         "Taiwan"
       ],
-      "default": "direct"
+      "default": "Direct"
     },
     {
       "tag": "Netflix",
@@ -288,16 +288,16 @@
       "type": "selector",
       "outbounds": [
         "Proxy",
-        "direct"
+        "Direct"
       ],
-      "default": "direct"
+      "default": "Direct"
     },
     {
       "tag": "Final",
       "type": "selector",
       "outbounds": [
         "Proxy",
-        "direct"
+        "Direct"
       ],
       "default": "Proxy"
     },
@@ -330,7 +330,7 @@
       "tag": "Global",
       "type": "selector",
       "outbounds": [
-        "direct",
+        "Direct",
         "Proxy",
         "Hong Kong",
         "Taiwan",
@@ -338,11 +338,11 @@
         "Singapore",
         "United States"
       ],
-      "default": "direct"
+      "default": "Direct"
     },
     {
-      "tag": "direct",
-      "type": "direct"
+      "tag": "Direct",
+      "type": "Direct"
     },
     {
       "tag": "dns-out",
