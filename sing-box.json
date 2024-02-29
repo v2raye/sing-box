@@ -179,7 +179,7 @@
         "download_detour": "Proxy"
       }
     ],
-    "final": "final",
+    "final": "Final",
     "auto_detect_interface": true
   },
   "outbounds": [
