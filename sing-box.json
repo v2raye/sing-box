@@ -179,7 +179,7 @@
         "download_detour": "Proxy"
       }
     ],
-    "final": "Final",
+    "final": "final",
     "auto_detect_interface": true
   },
   "outbounds": [
@@ -293,7 +293,7 @@
       "default": "direct"
     },
     {
-      "tag": "Final",
+      "tag": final",
       "type": "selector",
       "outbounds": [
         "Proxy",
