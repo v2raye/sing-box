@@ -179,7 +179,7 @@
         "tag": "Microsoft",
         "type": "remote",
         "format": "binary",
-        "url": "https://github.com/MetaCubeX/meta-rules-dat/raw/sing/geo-lite/mixed/microsoft.srs",
+        "url": "https://raw.githubusercontent.com/Toperlock/sing-box-geosite/blob/main/rule/Microsoft.srs",
         "download_detour": "Proxy"
       },     
       {
