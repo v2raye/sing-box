@@ -68,7 +68,7 @@
       },
       {
         "clash_mode": "Global",
-        "outbound": "GLOBAL"
+        "outbound": "Global"
       },
       {
         "rule_set": "bilibili",
@@ -327,7 +327,7 @@
       "outbounds": []
     },
     {
-      "tag": "GLOBAL",
+      "tag": "Global",
       "type": "selector",
       "outbounds": [
         "direct",
