@@ -172,7 +172,7 @@
         "tag": "Microsoft",
         "type": "remote",
         "format": "binary",
-        "url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/microsoft.srs",
+        "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo-lite/geosite/microsoft.srs",
         "download_detour": "Proxy"
       },
       {
@@ -298,7 +298,7 @@
       "tag": "Microsoft",
       "type": "selector",
       "outbounds": [
-	    "direct",
+	"direct",
         "Hong Kong",
         "Taiwan",
         "Japan",
