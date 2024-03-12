@@ -192,7 +192,7 @@
         "tag": "Telegram",
         "type": "remote",
         "format": "binary",
-        "url": "ttps://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geoip/telegram.srs",
+        "url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geoip/telegram.srs",
         "download_detour": "direct"
       },  
       {
