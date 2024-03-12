@@ -148,6 +148,7 @@
     {
       "tag":"Google",
       "type":"selector",
+      "outbounds":[ 
         "Proxy",
         "Hong Kong",
         "Taiwan",
@@ -172,6 +173,7 @@
     {
       "tag":"Twitter",
       "type":"selector",
+      "outbounds":[ 
         "Hong Kong",
         "Taiwan",
         "Japan",
