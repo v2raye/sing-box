@@ -87,6 +87,10 @@
         "outbound": "Openai"
       },
       {
+        "rule_set": "Microsoft",
+        "outbound": "Microsoft"
+      },	    
+      {
         "rule_set": "Google",
         "outbound": "Google"
       },
