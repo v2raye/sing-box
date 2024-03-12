@@ -123,6 +123,7 @@
     {
       "tag":"Proxy",
       "type":"selector",
+      "outbounds":[   
         "Hong Kong",
         "Taiwan",
         "Japan",
