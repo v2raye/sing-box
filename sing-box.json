@@ -165,6 +165,13 @@
         "download_detour": "Proxy"
       },
       {
+        "tag": "Microsoft",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/microsoft.srs",
+        "download_detour": "Proxy"
+      },
+      {
         "tag": "Telegram",
         "type": "remote",
         "format": "binary",
@@ -284,10 +291,22 @@
       "default": "United States"
     },
     {
+      "tag": "Microsoft",
+      "type": "selector",
+      "outbounds": [
+	    "direct",
+        "Hong Kong",
+        "Taiwan",
+        "Japan",
+        "Singapore",
+        "United States"
+      ],
+      "default": "direct"
+    },
+    {
       "tag": "cn",
       "type": "selector",
       "outbounds": [
-        "Proxy",
         "direct"
       ],
       "default": "direct"
