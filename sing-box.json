@@ -7,8 +7,8 @@
     },
     "servers": [
       {
-        "tag": "Cloudflare",
-        "address": "https://1.1.1.1/dns-query",
+        "tag": "google",
+        "address": "https://8.8.8.8/dns-query",
         "detour": "Proxy"
       },
       {
@@ -19,7 +19,11 @@
       {
         "tag": "fakeip",
         "address": "fakeip"
-      }
+      },
+      {
+        "tag": "block",
+        "address": "rcode://success"
+      }	    
     ],
     "rules": [
       {
@@ -54,7 +58,7 @@
       },
       {
         "rule_set": "geolocation-!cn",
-        "server": "Clouflare"
+        "server": "google"
       }
     ],
     "Final": "ali",
