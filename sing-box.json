@@ -141,13 +141,6 @@
     ],
     "rule_set": [
       {
-        "tag": "Apple",
-        "type": "remote",
-        "format": "binary",
-        "url": "https://mirror.ghproxy.com/https://raw.githubusercontent.com/v2raye/sing-box-rule/main/rule/Apple.srs",
-        "download_detour": "direct"
-      },
-      {
         "tag": "bilibili",
         "type": "remote",
         "format": "binary",
@@ -155,33 +148,12 @@
         "download_detour": "direct"
       },
       {
-        "tag": "cn",
+        "tag": "Apple",
         "type": "remote",
         "format": "binary",
-        "url": "https://mirror.ghproxy.com/https://raw.githubusercontent.com/v2raye/sing-box-rule/main/rule/Domestic.srs",
+        "url": "https://mirror.ghproxy.com/https://raw.githubusercontent.com/v2raye/sing-box-rule/main/rule/Apple.srs",
         "download_detour": "direct"
-      },
-      {
-        "tag": "cnip",
-        "type": "remote",
-        "format": "binary",
-        "url": "https://mirror.ghproxy.com/https://raw.githubusercontent.com/v2raye/sing-box-rule/main/rule/Domestic%2520IPs.srs",
-        "download_detour": "direct"
-      },
-      {
-        "tag": "Google",
-        "type": "remote",
-        "format": "binary",
-        "url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/google.srs",
-        "download_detour": "direct"
-      },
-      {
-        "tag": "geolocation-!cn",
-        "type": "remote",
-        "format": "binary",
-        "url": "https://mirror.ghproxy.com/https://raw.githubusercontent.com/v2raye/sing-box-rule/main/rule/Proxy.srs",
-        "download_detour": "direct"
-      },
+      },	
       {
         "tag": "Netflix",
         "type": "remote",
@@ -209,12 +181,40 @@
         "format": "binary",
         "url": "https://mirror.ghproxy.com/https://raw.githubusercontent.com/v2raye/sing-box-rule/main/rule/Telegram.srs",
         "download_detour": "direct"
-      },  
+      },
       {
         "tag": "YouTube",
         "type": "remote",
         "format": "binary",
         "url": "https://mirror.ghproxy.com/https://raw.githubusercontent.com/v2raye/sing-box-rule/main/rule/YouTube.srs",
+        "download_detour": "direct"
+      }
+      {
+        "tag": "Google",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/google.srs",
+        "download_detour": "direct"
+      },
+      {
+        "tag": "geolocation-!cn",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://mirror.ghproxy.com/https://raw.githubusercontent.com/v2raye/sing-box-rule/main/rule/Proxy.srs",
+        "download_detour": "direct"
+      },
+      {
+        "tag": "cnip",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://mirror.ghproxy.com/https://raw.githubusercontent.com/v2raye/sing-box-rule/main/rule/Domestic%2520IPs.srs",
+        "download_detour": "direct"
+      },
+      {
+        "tag": "cn",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://mirror.ghproxy.com/https://raw.githubusercontent.com/v2raye/sing-box-rule/main/rule/Domestic.srs",
         "download_detour": "direct"
       }
     ],
