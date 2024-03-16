@@ -121,7 +121,7 @@
       },
       {
         "rule_set": "cn",
-        "outbound": "cn"
+        "outbound": "direct"
       },
       {
         "rule_set": "cnip",
@@ -326,20 +326,12 @@
       "tag": "Microsoft",
       "type": "selector",
       "outbounds": [
-	    "direct",
+	"direct",
         "Hong Kong",
         "Taiwan",
         "Japan",
         "Singapore",
         "United States"
-      ],
-      "default": "direct"
-    },
-    {
-      "tag": "cn",
-      "type": "selector",
-      "outbounds": [
-        "direct"
       ],
       "default": "direct"
     },
