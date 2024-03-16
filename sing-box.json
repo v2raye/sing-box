@@ -188,7 +188,7 @@
         "format": "binary",
         "url": "https://mirror.ghproxy.com/https://raw.githubusercontent.com/v2raye/sing-box-rule/main/rule/YouTube.srs",
         "download_detour": "direct"
-      }
+      },
       {
         "tag": "Google",
         "type": "remote",
