@@ -346,28 +346,43 @@
     },
     {
       "tag": "Hong Kong",
-      "type": "selector",
-      "outbounds": []
+      "type": "urltest",
+      "outbounds": [],
+      "url": "https://www.gstatic.com/generate_204",
+      "interval": "1m",
+      "tolerance": 50
     },
     {
       "tag": "Taiwan",
-      "type": "selector",
-      "outbounds": []
+      "type": "urltest",
+      "outbounds": [],
+      "url": "https://www.gstatic.com/generate_204",
+      "interval": "1m",
+      "tolerance": 50
     },
     {
       "tag": "Japan",
-      "type": "selector",
-      "outbounds": []
+      "type": "urltest",
+      "outbounds": [],
+      "url": "https://www.gstatic.com/generate_204",
+      "interval": "1m",
+      "tolerance": 50
     },
     {
       "tag": "Singapore",
-      "type": "selector",
-      "outbounds": []
+      "type": "urltest",
+      "outbounds": [],
+      "url": "https://www.gstatic.com/generate_204",
+      "interval": "1m",
+      "tolerance": 50
     },
     {
       "tag": "United States",
-      "type": "selector",
-      "outbounds": []
+      "type": "urltest",
+      "outbounds": [],
+      "url": "https://www.gstatic.com/generate_204",
+      "interval": "1m",
+      "tolerance": 50
     },
     {
       "tag": "Global",
