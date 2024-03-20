@@ -41,7 +41,7 @@
       },
       {
         "rule_set": "cn",
-        "server": "tx"
+        "server": "ali"
       },       
       {
         "clash_mode": "Direct",
