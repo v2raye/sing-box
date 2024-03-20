@@ -425,6 +425,10 @@
       "type": "dns"
     },
     {
+      "type": "block",
+      "tag": "block"
+    },
+    {
       "tag": "loop",
       "type": "socks",
       "server": "127.0.0.1",
