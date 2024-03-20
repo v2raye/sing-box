@@ -40,6 +40,10 @@
         "disable_cache": true
       },
       {
+        "rule_set": "cn",
+        "server": "tx"
+      },       
+      {
         "clash_mode": "Direct",
         "server": "ali"
       },
@@ -67,8 +71,17 @@
   "route": {
     "rules": [
       {
+        "protocol": "dns",
+        "outbound": "dns-out"
+      },
+      {
         "port": 53,
         "outbound": "dns-out"
+      },
+      {
+        "network": "udp",
+        "port": 443,
+        "outbound": "block"
       },
       {
         "ip_is_private": true,
