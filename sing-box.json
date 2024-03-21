@@ -220,7 +220,7 @@
         "tag": "cnip",
         "type": "remote",
         "format": "binary",
-        "url": "https://raw.githubusercontent.com/v2raye/sing-box-rule/main/rule/CN-ip-cidr.srs",
+        "url": "https://mirror.ghproxy.com/https://raw.githubusercontent.com/v2raye/sing-box-rule/main/rule/CN-ip-cidr.srs",
         "download_detour": "direct"
       },
       {
