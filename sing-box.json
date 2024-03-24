@@ -403,20 +403,6 @@
       "idle_timeout": "30m"
     },
     {
-      "tag": "Global",
-      "type": "selector",
-      "outbounds": [
-        "direct",
-        "Proxy",
-        "Hong Kong",
-        "Taiwan",
-        "Japan",
-        "Singapore",
-        "United States"
-      ],
-      "default": "direct"
-    },
-    {
       "tag": "direct",
       "type": "direct"
     },
