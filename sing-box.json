@@ -93,7 +93,7 @@
       },
       {
         "clash_mode": "Global",
-        "outbound": "Global"
+        "outbound": "Proxy"
       },
       {
         "domain": [
