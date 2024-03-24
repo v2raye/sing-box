@@ -361,7 +361,7 @@
       "tag": "Hong Kong",
       "type": "urltest",
       "outbounds": [],
-      "url": "https://www.gstatic.com/generate_204",
+      "url": "https://cp.cloudflare.com/generate_204",
       "interval": "5m",
       "tolerance": 50,
       "idle_timeout": "30m"
@@ -370,7 +370,7 @@
       "tag": "Taiwan",
       "type": "urltest",
       "outbounds": [],
-      "url": "https://www.gstatic.com/generate_204",
+      "url": "https://cp.cloudflare.com/generate_204",
       "interval": "5m",
       "tolerance": 50,
       "idle_timeout": "30m"
@@ -379,7 +379,7 @@
       "tag": "Japan",
       "type": "urltest",
       "outbounds": [],
-      "url": "https://www.gstatic.com/generate_204",
+      "url": "https://cp.cloudflare.com/generate_204",
       "interval": "5m",
       "tolerance": 50,
       "idle_timeout": "30m"
@@ -388,7 +388,7 @@
       "tag": "Singapore",
       "type": "urltest",
       "outbounds": [],
-      "url": "https://www.gstatic.com/generate_204",
+      "url": "https://cp.cloudflare.com/generate_204",
       "interval": "5m",
       "tolerance": 50,
       "idle_timeout": "30m"
@@ -397,7 +397,7 @@
       "tag": "United States",
       "type": "urltest",
       "outbounds": [],
-      "url": "https://www.gstatic.com/generate_204",
+      "url": "https://cp.cloudflare.com/generate_204",
       "interval": "5m",
       "tolerance": 50,
       "idle_timeout": "30m"
