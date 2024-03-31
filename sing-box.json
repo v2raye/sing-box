@@ -96,6 +96,25 @@
         "outbound": "Proxy"
       },
       {
+        "type": "logical",
+        "mode": "or",
+        "rules": [
+          {
+            "domain_regex": "^stun\\..+"
+          },
+          {
+            "domain_keyword": [
+              "stun",
+              "httpdns"
+            ]
+          },
+          {
+            "protocol": "stun"
+          }
+        ],
+        "outbound": "block"
+      },
+      {
         "domain": [
           "clash.razord.top",
           "yacd.metacubex.one",
@@ -133,11 +152,10 @@
         "outbound": "Telegram"
       },
       {
-        "rule_set": "cn",
-        "outbound": "direct"
-      },
-      {
-        "rule_set": "cnip",
+        "rule_set": [
+	  "cn",
+	  "cnip"
+	],
         "outbound": "direct"
       },	    
       {
