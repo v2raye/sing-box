@@ -359,48 +359,28 @@
     },
     {
       "tag": "Hong Kong",
-      "type": "urltest",
-      "outbounds": [],
-      "url": "https://cp.cloudflare.com/generate_204",
-      "interval": "5m",
-      "tolerance": 50,
-      "idle_timeout": "30m"
+      "type": "selector",
+      "outbounds": []
     },
     {
       "tag": "Taiwan",
-      "type": "urltest",
-      "outbounds": [],
-      "url": "https://cp.cloudflare.com/generate_204",
-      "interval": "5m",
-      "tolerance": 50,
-      "idle_timeout": "30m"
+      "type": "selector",
+      "outbounds": []
     },
     {
       "tag": "Japan",
-      "type": "urltest",
-      "outbounds": [],
-      "url": "https://cp.cloudflare.com/generate_204",
-      "interval": "5m",
-      "tolerance": 50,
-      "idle_timeout": "30m"
+      "type": "selector",
+      "outbounds": []
     },
     {
       "tag": "Singapore",
-      "type": "urltest",
-      "outbounds": [],
-      "url": "https://cp.cloudflare.com/generate_204",
-      "interval": "5m",
-      "tolerance": 50,
-      "idle_timeout": "30m"
+      "type": "selector",
+      "outbounds": []
     },
     {
       "tag": "United States",
-      "type": "urltest",
-      "outbounds": [],
-      "url": "https://cp.cloudflare.com/generate_204",
-      "interval": "5m",
-      "tolerance": 50,
-      "idle_timeout": "30m"
+      "type": "selector",
+      "outbounds": []
     },
     {
       "tag": "direct",
