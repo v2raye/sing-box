@@ -68,7 +68,7 @@
             "rule_set": "geolocation-!cn"
           },
           {
-            "rule_set": "cn"
+            "rule_set": "cnip"
           }
         ],
         "server": "google",
