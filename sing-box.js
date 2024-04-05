@@ -32,7 +32,7 @@ config.outbounds.map(i => {
     i.outbounds.push(...getTags(proxies, /美|us|unitedstates|united states|🇺🇸/i))
   }
   if (['Germany'].includes(i.tag)) {
-    i.outbounds.push(...getTags(proxies, /德国|de|germany|🇩🇪/i))
+    i.outbounds.push(...getTags(proxies, /德国|法国|de|fr|germany|france|🇩🇪|🇫🇷/i))
   }
 })
 
