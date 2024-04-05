@@ -71,8 +71,7 @@
             "rule_set": "cnip"
           }
         ],
-        "server": "google",
-        "client_subnet": "223.5.5.5"
+        "server": "google"
       }
     ],
     "Final": "ali",
