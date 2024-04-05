@@ -29,7 +29,7 @@ config.outbounds.map(i => {
     i.outbounds.push(...getTags(proxies, /^(?!.*(?:us)).*(新|sg|singapore|🇸🇬)/i))
   }
   if (['Germany'].includes(i.tag)) {
-    i.outbounds.push(...getTags(proxies, /德国|法国|germany|france|de|fr|🇫🇷|🇩🇪/i))
+    i.outbounds.push(...getTags(proxies, /德国|法国|germany|france|de|fr|🇩🇪|🇫🇷/i))
   }
   if (['United States'].includes(i.tag)) {
     i.outbounds.push(...getTags(proxies, /美|us|unitedstates|united states|🇺🇸/i))
