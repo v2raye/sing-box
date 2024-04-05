@@ -164,8 +164,38 @@
         "outbound": "Apple"
       },
       {
-        "rule_set": "Telegram",
-        "outbound": "Telegram"
+        "ip_cidr": [
+          "91.108.16.0/21",
+          "91.108.56.0/23",
+          "149.154.168.0/22",
+          "2001:b28:f23c::/48",
+          "2001:b28:f23f::/48"
+        ],
+        "outbound": "Singapore"
+      },
+      {
+        "ip_cidr": [
+          "91.108.12.0/22",
+          "149.154.172.0/22",
+          "2001:b28:f23d::/48"
+        ],
+        "outbound": "United States"
+      },
+      {
+        "ip_cidr": [
+          "5.28.192.0/18",
+          "91.105.192.0/23",
+          "91.108.4.0/22",
+          "91.108.8.0/22",
+          "91.108.56.0/22",
+          "95.161.64.0/20",
+          "109.239.140.0/24",
+          "149.154.160.0/21",
+          "185.76.151.0/24",
+          "2001:67c:4e8::/48",
+          "2a0a:f280:203::/48"
+        ],
+        "outbound": "Germany"
       },
       {
         "rule_set": [
@@ -220,13 +250,6 @@
         "type": "remote",
         "format": "binary",
         "url": "https://mirror.ghproxy.com/https://raw.githubusercontent.com/v2raye/sing-box-rule/main/rule/Microsoft.srs",
-        "download_detour": "direct"
-      },
-      {
-        "tag": "Telegram",
-        "type": "remote",
-        "format": "binary",
-        "url": "https://mirror.ghproxy.com/https://raw.githubusercontent.com/v2raye/sing-box-rule/main/rule/Telegram.srs",
         "download_detour": "direct"
       },
       {
@@ -308,18 +331,6 @@
         "United States"
       ],
       "default": "direct"
-    },
-    {
-      "tag": "Telegram",
-      "type": "selector",
-      "outbounds": [
-        "Hong Kong",
-        "Taiwan",
-        "Japan",
-        "Singapore",
-        "United States"
-      ],
-      "default": "Singapore"
     },
     {
       "tag": "bilibili",
@@ -413,6 +424,11 @@
     },
     {
       "tag": "United States",
+      "type": "selector",
+      "outbounds": []
+    },
+    {
+      "tag": "Germany",
       "type": "selector",
       "outbounds": []
     },
