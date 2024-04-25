@@ -7,8 +7,8 @@
     },
     "servers": [
       {
-        "tag": "v2raye",
-        "address": "https://gov.v2raye.com/pathpy",
+        "tag": "google",
+        "address": "https://8.8.8.8/dns-query",
         "detour": "Proxy"
       },
       {
@@ -71,7 +71,7 @@
             "rule_set": "cnip"
           }
         ],
-        "server": "v2raye"
+        "server": "google"
       }
     ],
     "Final": "ali",
