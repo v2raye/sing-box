@@ -71,7 +71,7 @@
         "rewrite_ttl": 1
       },
       {
-        "rule_set": "geolocation-!cn",
+        "rule_set": "geosite-geolocation-!cn",
         "server": "google"
       }
     ],
