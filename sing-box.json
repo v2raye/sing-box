@@ -257,7 +257,7 @@
         "tag": "cnip",
         "type": "remote",
         "format": "binary",
-        "url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geoip/cn.srs",
+        "url": "https://testingcf.jsdelivr.net/v2raye/sing-box-rule/blob/main/rule/cncidr.srs",
         "download_detour": "direct"
       },
       {
