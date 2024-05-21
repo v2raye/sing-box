@@ -27,14 +27,6 @@
     ],
     "rules": [
       {
-        "domain": [
-          "ghProxy.com",
-          "cdn.jsdelivr.net",
-          "testingcf.jsdelivr.net"
-        ],
-        "server": "fakeip"
-      },
-      {
         "outbound": "any",
         "server": "ali",
         "disable_cache": true
@@ -49,7 +41,7 @@
       },
       {
         "clash_mode": "Global",
-        "server": "fakeip"
+        "server": "google"
       },
       {
         "inbound": "tun",
@@ -61,23 +53,16 @@
         "rewrite_ttl": 1
       },
       {
-        "type": "logical",
-        "mode": "and",
-        "rules": [	  
-          {
-            "rule_set": "geolocation-!cn"
-          },
-          {
-            "rule_set": "cnip"
-          }
-        ],
+        "rule_set": "geolocation-!cn",
         "server": "google"
       }
     ],
-    "Final": "ali",
-    "independent_cache": true
+    "independent_cache": true,
+    "strategy": "prefer_ipv4"
   },
   "route": {
+    "auto_detect_interface": true,
+    "final": "Proxy",	  
     "rules": [
       {
         "type": "logical",
@@ -93,42 +78,12 @@
         "outbound": "dns-out"
       },
       {
-        "ip_is_private": true,
-        "outbound": "direct"
-      },
-      {
         "clash_mode": "Direct",
         "outbound": "direct"
       },
       {
         "clash_mode": "Global",
         "outbound": "Proxy"
-      },
-      {
-        "type": "logical",
-        "mode": "or",
-        "rules": [
-          {
-            "domain_regex": "^stun\\..+"
-          },
-          {
-            "domain_keyword": [
-              "stun",
-              "httpdns"
-            ]
-          },
-          {
-            "port": 853
-          },
-          {
-            "network": "udp",
-            "port": 443
-          },
-          {
-            "protocol": "stun"
-          }
-        ],
-        "outbound": "block"
       },
       {
         "domain": [
@@ -203,17 +158,14 @@
 	      "cnip"
 	    ],
         "outbound": "direct"
-      },	    
+      },  
       {
         "rule_set": "geolocation-!cn",
         "outbound": "Proxy"
       },
       {
-        "inbound": [
-          "tun",
-          "mixed"
-        ],
-        "outbound": "loop"
+        "ip_is_private": true,
+        "outbound": "direct"
       }
     ],
     "rule_set": [
@@ -287,9 +239,7 @@
         "url": "https://mirror.ghproxy.com/https://raw.githubusercontent.com/v2raye/sing-box-rule/main/rule/Domestic.srs",
         "download_detour": "direct"
       }
-    ],
-    "Final": "Final",
-    "auto_detect_interface": true
+    ]
   },
   "outbounds": [
     {
@@ -302,8 +252,7 @@
         "Singapore",
         "United States",
         "direct"
-      ],
-      "default": "Taiwan"
+      ]
     },
     {
       "tag": "Google",
@@ -384,7 +333,7 @@
       "tag": "Microsoft",
       "type": "selector",
       "outbounds": [
-	"direct",
+	    "direct",
         "Hong Kong",
         "Taiwan",
         "Japan",
@@ -443,12 +392,6 @@
     {
       "type": "block",
       "tag": "block"
-    },
-    {
-      "tag": "loop",
-      "type": "socks",
-      "server": "127.0.0.1",
-      "server_port": 7891
     }
   ],
   "inbounds": [
@@ -480,8 +423,7 @@
       "type": "mixed",
       "listen": "127.0.0.1",
       "listen_port": 7891,
-      "sniff": true,
-      "domain_strategy": "prefer_ipv4"
+      "sniff": true
     }
   ],
   "experimental": {
@@ -497,8 +439,7 @@
     }
   },
   "log": {
-    "disabled": false,
-    "level": "debug",
+    "level": "info",
     "timestamp": true
   }
 }
