@@ -269,7 +269,8 @@
           "yacd.haishan.me",
           "d.metacubex.one",
 	  "gov.v2raye.com",
-          "bt.v2raye.com"
+          "bt.v2raye.com",
+	  "local.adguard.org"
         ],
         "outbound": "direct"
       },
