@@ -132,7 +132,6 @@
         "rule_set": ["geoip-cn", "geosite-cn"],
         "outbound": "direct"
       },
-      },
       {
         "inbound": [
           "tun",
