@@ -53,7 +53,7 @@
         "server": "google"
       }
     ],
-    "Final": "ali",
+    "Final": "goolge",
     "independent_cache": true
   },
   "route": {
@@ -79,8 +79,8 @@
           "clash.razord.top",
           "yacd.metacubex.one",
           "yacd.haishan.me",
-          "d.metacubex.one"
-		  "gov.v2raye.com",
+          "d.metacubex.one",
+	  "gov.v2raye.com"
         ],
         "outbound": "direct"
       },
