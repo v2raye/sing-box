@@ -32,6 +32,9 @@ config.outbounds.map(i => {
   if (['United States'].includes(i.tag)) {
     i.outbounds.push(...getTags(proxies, /美|us|unitedstates|united states|🇺🇸/i))
   }
+  if (['Europe'].includes(i.tag)) {
+    i.outbounds.push(...getTags(proxies, /德国|法国|荷兰|英国|de|fr|nl|gb|🇩🇪|🇫🇷|🇳🇱|🇬🇧/i))
+  }  
 })
 
 config.outbounds.forEach(outbound => {
