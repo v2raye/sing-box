@@ -17,55 +17,51 @@
         "detour": "direct"
       },
       {
-        "tag": "fakeip",
+        "tag": "dns-fakeip",
         "address": "fakeip"
       },
       {
-        "tag": "block",
+        "tag": "dns-block",
         "address": "rcode://success"
       }
     ],
     "rules": [
       {
-        "outbound": "any",
-        "server": "ali",
-        "disable_cache": true
-      },
+        "type": "logical",
+        "mode": "or",
+        "rules": [
+          {
+            "rule_set": "geosite-category-ads-all"
+          },
+          {
+            "domain_suffix": [
+              "appcenter.ms",
+              "app-measurement.com",
+              "firebase.io",
+              "crashlytics.com",
+              "google-analytics.com"
+            ]
+          }
+        ],
+        "disable_cache": true,
+        "server": "dns-block"
+      },	    
       {
-        "clash_mode": "Direct",
+        "outbound": "any",
         "server": "ali"
       },
       {
-        "clash_mode": "Global",
-        "server": "fakeip"
-      },
-      {
-        "inbound": "tun",
         "query_type": [
           "A",
           "AAAA"
         ],
-        "server": "fakeip",
-        "rewrite_ttl": 1
+        "server": "dns-fakeip"
       },
-      {
-        "rule_set": "geosite-geolocation-!cn",
-        "server": "google"
-      }
     ],
-    "Final": "ali",
     "independent_cache": true
   },
   "route": {
     "rules": [
-      {
-        "port": 53,
-        "outbound": "dns-out"
-      },
-      {
-        "ip_is_private": true,
-        "outbound": "direct"
-      },
       {
         "clash_mode": "Direct",
         "outbound": "direct"
@@ -73,6 +69,10 @@
       {
         "clash_mode": "Global",
         "outbound": "Proxy"
+      },
+      {
+        "protocol": "dns",
+        "outbound": "dns"
       },
       {
         "type": "logical",
@@ -150,22 +150,24 @@
       {
         "rule_set": ["geoip-cn", "geosite-cn"],
         "outbound": "direct"
-      },
-      {
-        "inbound": [
-          "tun",
-          "mixed"
-        ],
-        "outbound": "loop"
       }
     ],
     "rule_set": [
+      {
+        "tag": "geosite-category-ads-all",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://adrules.top/adrules-singbox.srs",
+        "download_detour": "Proxy",
+        "update_interval": "1d"
+      },
       {
         "tag": "geoip-google",
         "type": "remote",
         "format": "binary",
         "url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geoip/google.srs",
         "download_detour": "direct"
+        "update_interval": "1d"	      
       },
       {
         "tag": "geoip-telegram",
@@ -173,6 +175,7 @@
         "format": "binary",
         "url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geoip/telegram.srs",
         "download_detour": "direct"
+        "update_interval": "1d"	      
       },
       {
         "tag": "geoip-twitter",
@@ -180,6 +183,7 @@
         "format": "binary",
         "url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geoip/twitter.srs",
         "download_detour": "direct"
+        "update_interval": "1d"	      
       },
       {
         "tag": "geoip-netflix",
@@ -187,6 +191,7 @@
         "format": "binary",
         "url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geoip/netflix.srs",
         "download_detour": "direct"
+        "update_interval": "1d"	      
       },
       {
         "tag": "geoip-apple",
@@ -194,6 +199,7 @@
         "format": "binary",
         "url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo-lite/geoip/apple.srs",
         "download_detour": "direct"
+        "update_interval": "1d"	      
       },
       {
         "tag": "geoip-bilibili",
@@ -201,6 +207,7 @@
         "format": "binary",
         "url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo-lite/geoip/bilibili.srs",
         "download_detour": "direct"
+        "update_interval": "1d"	      
       },
       {
         "tag": "geoip-cn",
@@ -208,6 +215,7 @@
         "format": "binary",
         "url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geoip/cn.srs",
         "download_detour": "direct"
+        "update_interval": "1d"	      
       },
       {
         "tag": "geosite-private",
@@ -215,6 +223,7 @@
         "format": "binary",
         "url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/private.srs",
         "download_detour": "direct"
+        "update_interval": "1d"	      
       },
       {
         "tag": "geosite-openai",
@@ -222,6 +231,7 @@
         "format": "binary",
         "url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/openai.srs",
         "download_detour": "direct"
+        "update_interval": "1d"	      
       },
       {
         "tag": "geosite-youtube",
@@ -229,6 +239,7 @@
         "format": "binary",
         "url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/youtube.srs",
         "download_detour": "direct"
+        "update_interval": "1d"	      
       },
       {
         "tag": "geosite-google",
@@ -236,6 +247,7 @@
         "format": "binary",
         "url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/google.srs",
         "download_detour": "direct"
+        "update_interval": "1d"	      
       },
       {
         "tag": "geosite-github",
@@ -243,6 +255,7 @@
         "format": "binary",
         "url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/github.srs",
         "download_detour": "direct"
+        "update_interval": "1d"	      
       },
       {
         "tag": "geosite-telegram",
@@ -250,6 +263,7 @@
         "format": "binary",
         "url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/telegram.srs",
         "download_detour": "direct"
+        "update_interval": "1d"	      
       },
       {
         "tag": "geosite-twitter",
@@ -257,6 +271,7 @@
         "format": "binary",
         "url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/twitter.srs",
         "download_detour": "direct"
+        "update_interval": "1d"	      
       },
       {
         "tag": "geosite-bilibili",
@@ -264,6 +279,7 @@
         "format": "binary",
         "url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/bilibili.srs",
         "download_detour": "direct"
+        "update_interval": "1d"	      
       },
       {
         "tag": "geosite-spotify",
@@ -271,6 +287,7 @@
         "format": "binary",
         "url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/spotify.srs",
         "download_detour": "direct"
+        "update_interval": "1d"	      
       },
       {
         "tag": "geosite-netflix",
@@ -278,6 +295,7 @@
         "format": "binary",
         "url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/netflix.srs",
         "download_detour": "direct"
+        "update_interval": "1d"	      
       },
       {
         "tag": "geosite-apple",
@@ -285,6 +303,7 @@
         "format": "binary",
         "url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/apple.srs",
         "download_detour": "direct"
+        "update_interval": "1d"	      
       },
       {
         "tag": "geosite-amazon",
@@ -292,6 +311,7 @@
         "format": "binary",
         "url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/amazon.srs",
         "download_detour": "direct"
+        "update_interval": "1d"	      
       },
       {
         "tag": "geosite-microsoft",
@@ -299,6 +319,7 @@
         "format": "binary",
         "url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/microsoft.srs",
         "download_detour": "direct"
+        "update_interval": "1d"	      
       },
       {
         "tag": "geosite-cn",
@@ -306,6 +327,7 @@
         "format": "binary",
         "url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/cn.srs",
         "download_detour": "direct"
+        "update_interval": "1d"	      
       },
       {
         "tag": "geosite-geolocation-!cn",
@@ -313,9 +335,10 @@
         "format": "binary",
         "url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/geolocation-!cn.srs",
         "download_detour": "direct"
+        "update_interval": "1d"	      
       }
     ],
-    "Final": "Final",
+    "Final": "Proxy",
     "auto_detect_interface": true
   },
   "outbounds": [
@@ -453,6 +476,10 @@
       "default": "Proxy"
     },
     {
+      "tag": "block",
+      "type": "block"
+    },
+    {
       "tag": "Hong Kong",
       "type": "selector",
       "outbounds": []
@@ -494,35 +521,13 @@
   ],
   "inbounds": [
     {
-      "tag": "tun",
       "type": "tun",
-      "inet4_address": "172.19.0.0/30",
-      "inet6_address": "fdfe:dcba:9876::0/126",
       "stack": "system",
+      "inet4_address": "172.19.0.1/30",
+      "inet6_address": "fdfe:dcba:9876::1/126",
       "auto_route": true,
-      "sniff": true,
-      "platform": {
-        "http_Proxy": {
-          "enabled": true,
-          "server": "127.0.0.1",
-          "server_port": 7890
-        }
-      }
-    },
-    {
-      "tag": "mixed",
-      "type": "mixed",
-      "listen": "127.0.0.1",
-      "listen_port": 7890,
+      "strict_route": true,
       "sniff": true
-    },
-    {
-      "tag": "loop-in",
-      "type": "mixed",
-      "listen": "127.0.0.1",
-      "listen_port": 7891,
-      "sniff": true,
-      "domain_strategy": "prefer_ipv4"
     }
   ],
   "experimental": {
@@ -530,11 +535,11 @@
       "external_controller": "127.0.0.1:9090",
       "external_ui": "ui",
       "external_ui_download_url": "https://github.com/MetaCubeX/metacubexd/archive/refs/heads/gh-pages.zip",
-      "external_ui_download_detour": "Proxy"
+      "external_ui_download_detour": "Proxy",
+      "default_mode": "rule"
     },
     "cache_file": {
-      "enabled": true,
-      "store_fakeip": true
+      "enabled": true
     }
   },
   "log": {
