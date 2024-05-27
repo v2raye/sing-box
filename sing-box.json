@@ -75,6 +75,25 @@
         "outbound": "Proxy"
       },
       {
+        "type": "logical",
+        "mode": "or",
+        "rules": [
+          {
+            "domain_regex": "^stun\\..+"
+          },
+          {
+            "domain_keyword": [
+              "stun",
+              "httpdns"
+            ]
+          },
+          {
+            "protocol": "stun"
+          }
+        ],
+        "outbound": "block"
+      },
+      {
         "domain": [
           "clash.razord.top",
           "yacd.metacubex.one",
