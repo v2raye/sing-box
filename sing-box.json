@@ -462,20 +462,6 @@
       "default": "Hong Kong"
     },
     {
-      "tag": "Final",
-      "type": "selector",
-      "outbounds": [
-        "Proxy",
-        "direct",
-        "Hong Kong",
-        "Taiwan",
-        "Japan",
-        "Singapore",
-        "United States"
-      ],
-      "default": "Proxy"
-    },
-    {
       "tag": "block",
       "type": "block"
     },
