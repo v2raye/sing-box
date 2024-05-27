@@ -31,7 +31,7 @@
         "mode": "or",
         "rules": [
           {
-            "rule_set": "geosite-category-ads-all" 
+            "rule_set": "geosite-category-ads-all"
           },
           {
             "domain_suffix": [
@@ -48,7 +48,7 @@
       },
       {
         "outbound": "any",
-        "server": "ali",
+        "server": "ali"
       },
       {
         "clash_mode": "Direct",
@@ -120,7 +120,7 @@
           "yacd.metacubex.one",
           "yacd.haishan.me",
           "d.metacubex.one",
-	  "gov.v2raye.com"
+          "gov.v2raye.com"
         ],
         "outbound": "direct"
       },
@@ -229,207 +229,207 @@
         "type": "remote",
         "format": "binary",
         "url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo-lite/geoip/bilibili.srs",
-        "download_detour": "direct"
-      },
-      {
-        "tag": "geoip-cn",
-        "type": "remote",
-        "format": "binary",
-        "url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geoip/cn.srs",
-        "download_detour": "direct"
-      },
-      {
-        "tag": "geosite-private",
-        "type": "remote",
-        "format": "binary",
-        "url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/private.srs",
-        "download_detour": "direct"
-      },
-      {
-        "tag": "geosite-openai",
-        "type": "remote",
-        "format": "binary",
-        "url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/openai.srs",
-        "download_detour": "direct"
-      },
-      {
-        "tag": "geosite-youtube",
-        "type": "remote",
-        "format": "binary",
-        "url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/youtube.srs",
-        "download_detour": "direct"
-      },
-      {
-        "tag": "geosite-google",
-        "type": "remote",
-        "format": "binary",
-        "url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/google.srs",
-        "download_detour": "direct"
-      },
-      {
-        "tag": "geosite-github",
-        "type": "remote",
-        "format": "binary",
-        "url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/github.srs",
-        "download_detour": "direct"
-      },
-      {
-        "tag": "geosite-telegram",
-        "type": "remote",
-        "format": "binary",
-        "url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/telegram.srs",
-        "download_detour": "direct"
-      },
-      {
-        "tag": "geosite-twitter",
-        "type": "remote",
-        "format": "binary",
-        "url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/twitter.srs",
-        "download_detour": "direct"
-      },
-      {
-        "tag": "geosite-bilibili",
-        "type": "remote",
-        "format": "binary",
-        "url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/bilibili.srs",
-        "download_detour": "direct"
-      },
-      {
-        "tag": "geosite-spotify",
-        "type": "remote",
-        "format": "binary",
-        "url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/spotify.srs",
-        "download_detour": "direct"
-      },
-      {
-        "tag": "geosite-netflix",
-        "type": "remote",
-        "format": "binary",
-        "url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/netflix.srs",
-        "download_detour": "direct"
-      },
-      {
-        "tag": "geosite-apple",
-        "type": "remote",
-        "format": "binary",
-        "url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/apple.srs",
-        "download_detour": "direct"
-      },
-      {
-        "tag": "geosite-amazon",
-        "type": "remote",
-        "format": "binary",
-        "url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/amazon.srs",
-        "download_detour": "direct"
-      },
-      {
-        "tag": "geosite-microsoft",
-        "type": "remote",
-        "format": "binary",
-        "url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/microsoft.srs",
-        "download_detour": "direct"
-      },
-      {
-        "tag": "geosite-cn",
-        "type": "remote",
-        "format": "binary",
-        "url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/cn.srs",
-        "download_detour": "direct"
-      },
-      {
-        "tag": "geosite-geolocation-!cn",
-        "type": "remote",
-        "format": "binary",
-        "url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/geolocation-!cn.srs",
-        "download_detour": "direct"
-      }
-    ],
-    "Final": "Final",
-    "auto_detect_interface": true
-  },
-  "outbounds": [
-    {
-      "tag": "Proxy",
-      "type": "selector",
-      "outbounds": [
-        "Hong Kong",
-        "Taiwan",
-        "Japan",
-        "Singapore",
-        "United States",
-        "direct"
-      ]
-    },
-    {
-      "tag": "Google",
-      "type": "selector",
-      "outbounds": [
-	    "Proxy",
-        "Hong Kong",
-        "Taiwan",
-        "Japan",
-        "Singapore",
-        "United States"
-      ]
-    },
-    {
-      "tag": "Apple",
-      "type": "selector",
-      "outbounds": [
-        "direct",
-	    "Proxy",
-        "Hong Kong",
-        "Taiwan",
-        "Japan",
-        "Singapore",
-        "United States"
-      ]
-    },
-    {
-      "tag": "Telegram",
-      "type": "selector",
-      "outbounds": [
-        "Hong Kong",
-        "Taiwan",
-        "Japan",
-        "Singapore",
-        "United States"
-      ]
-    },
-    {
-      "tag": "BiliBili",
-      "type": "selector",
-      "outbounds": [
-        "direct",
-        "Hong Kong",
-        "Taiwan"
-      ],
-      "default": "direct"
-    },
-    {
-      "tag": "NETFLIX",
-      "type": "selector",
-      "outbounds": [
-        "Hong Kong",
-        "Taiwan",
-        "Japan",
-        "Singapore",
-        "United States"
-      ],
-      "default": "Singapore"
-    },
-    {
-      "tag": "Microsoft",
-      "type": "selector",
-      "outbounds": [
-        "direct",
-        "Hong Kong",
-        "Taiwan",
-        "Japan",
-        "Singapore",
-        "United States"
-      ],
-      "default": "direct"
+"download_detour": "direct"
+},
+{
+"tag": "geoip-cn",
+"type": "remote",
+"format": "binary",
+"url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geoip/cn.srs",
+"download_detour": "direct"
+},
+{
+"tag": "geosite-private",
+"type": "remote",
+"format": "binary",
+"url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/private.srs",
+"download_detour": "direct"
+},
+{
+"tag": "geosite-openai",
+"type": "remote",
+"format": "binary",
+"url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/openai.srs",
+"download_detour": "direct"
+},
+{
+"tag": "geosite-youtube",
+"type": "remote",
+"format": "binary",
+"url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/youtube.srs",
+"download_detour": "direct"
+},
+{
+"tag": "geosite-google",
+"type": "remote",
+"format": "binary",
+"url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/google.srs",
+"download_detour": "direct"
+},
+{
+"tag": "geosite-github",
+"type": "remote",
+"format": "binary",
+"url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/github.srs",
+"download_detour": "direct"
+},
+{
+"tag": "geosite-telegram",
+"type": "remote",
+"format": "binary",
+"url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/telegram.srs",
+"download_detour": "direct"
+},
+{
+"tag": "geosite-twitter",
+"type": "remote",
+"format": "binary",
+"url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/twitter.srs",
+"download_detour": "direct"
+},
+{
+"tag": "geosite-bilibili",
+"type": "remote",
+"format": "binary",
+"url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/bilibili.srs",
+"download_detour": "direct"
+},
+{
+"tag": "geosite-spotify",
+"type": "remote",
+"format": "binary",
+"url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/spotify.srs",
+"download_detour": "direct"
+},
+{
+"tag": "geosite-netflix",
+"type": "remote",
+"format": "binary",
+"url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/netflix.srs",
+"download_detour": "direct"
+},
+{
+"tag": "geosite-apple",
+"type": "remote",
+"format": "binary",
+"url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/apple.srs",
+"download_detour": "direct"
+},
+{
+"tag": "geosite-amazon",
+"type": "remote",
+"format": "binary",
+"url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/amazon.srs",
+"download_detour": "direct"
+},
+{
+"tag": "geosite-microsoft",
+"type": "remote",
+"format": "binary",
+"url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/microsoft.srs",
+"download_detour": "direct"
+},
+{
+"tag": "geosite-cn",
+"type": "remote",
+"format": "binary",
+"url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/cn.srs",
+"download_detour": "direct"
+},
+{
+"tag": "geosite-geolocation-!cn",
+"type": "remote",
+"format": "binary",
+"url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/geolocation-!cn.srs",
+"download_detour": "direct"
+}
+],
+"Final": "Final",
+"auto_detect_interface": true
+},
+"outbounds": [
+{
+"tag": "Proxy",
+"type": "selector",
+"outbounds": [
+"Hong Kong",
+"Taiwan",
+"Japan",
+"Singapore",
+"United States",
+"direct"
+]
+},
+{
+"tag": "Google",
+"type": "selector",
+"outbounds": [
+"Proxy",
+"Hong Kong",
+"Taiwan",
+"Japan",
+"Singapore",
+"United States"
+]
+},
+{
+"tag": "Apple",
+"type": "selector",
+"outbounds": [
+"direct",
+"Proxy",
+"Hong Kong",
+"Taiwan",
+"Japan",
+"Singapore",
+"United States"
+]
+},
+{
+"tag": "Telegram",
+"type": "selector",
+"outbounds": [
+"Hong Kong",
+"Taiwan",
+"Japan",
+"Singapore",
+"United States"
+]
+},
+{
+"tag": "BiliBili",
+"type": "selector",
+"outbounds": [
+"direct",
+"Hong Kong",
+"Taiwan"
+],
+"default": "direct"
+},
+{
+"tag": "NETFLIX",
+"type": "selector",
+"outbounds": [
+"Hong Kong",
+"Taiwan",
+"Japan",
+"Singapore",
+"United States"
+],
+"default": "Singapore"
+},
+{
+"tag": "Microsoft",
+"type": "selector",
+"outbounds": [
+"direct",
+"Hong Kong",
+"Taiwan",
+"Japan",
+"Singapore",
+"United States"
+],
+"default": "direct"
     },
     {
       "tag": "OpenAI",
