@@ -53,3 +53,4 @@ function getTags(proxies, regex) {
   return proxies.filter(p => regex.test(p.tag)).map(p => p.tag);
 }
 
+
