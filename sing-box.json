@@ -17,19 +17,38 @@
         "detour": "direct"
       },
       {
-        "tag": "fakeip",
+        "tag": "dns-fakeip",
         "address": "fakeip"
       },
       {
-        "tag": "block",
+        "tag": "dns-block",
         "address": "rcode://success"
       }
     ],
     "rules": [
       {
+        "type": "logical",
+        "mode": "or",
+        "rules": [
+          {
+            "rule_set": "geosite-category-ads-all" 
+          },
+          {
+            "domain_suffix": [
+              "appcenter.ms",
+              "app-measurement.com",
+              "firebase.io",
+              "crashlytics.com",
+              "google-analytics.com"
+            ]
+          }
+        ],
+        "disable_cache": true,
+        "server": "dns-block"
+      },
+      {
         "outbound": "any",
         "server": "ali",
-        "disable_cache": true
       },
       {
         "clash_mode": "Direct",
@@ -37,7 +56,7 @@
       },
       {
         "clash_mode": "Global",
-        "server": "fakeip"
+        "server": "dns-fakeip"
       },
       {
         "inbound": "tun",
@@ -45,7 +64,7 @@
           "A",
           "AAAA"
         ],
-        "server": "fakeip",
+        "server": "dns-fakeip",
         "rewrite_ttl": 1
       },
       {
@@ -162,6 +181,14 @@
       }
     ],
     "rule_set": [
+      {
+        "tag": "geosite-category-ads-all",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://raw.githubusercontent.com/SagerNet/sing-geosite/rule-set/geosite-category-ads-all.srs",
+        "download_detour": "Proxy",
+        "update_interval": "1d"
+      },
       {
         "tag": "geoip-google",
         "type": "remote",
