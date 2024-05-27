@@ -371,7 +371,7 @@
       "type": "selector",
       "outbounds": [
         "direct",
-	    "Proxy",
+	"Proxy",
         "Hong Kong",
         "Taiwan",
         "Japan",
@@ -462,10 +462,6 @@
       "default": "Hong Kong"
     },
     {
-      "tag": "block",
-      "type": "block"
-    },
-    {
       "tag": "Hong Kong",
       "type": "selector",
       "outbounds": []
@@ -489,6 +485,10 @@
       "tag": "United States",
       "type": "selector",
       "outbounds": []
+    },
+    {
+      "tag": "block",
+      "type": "block"
     },
     {
       "tag": "direct",
