@@ -105,10 +105,6 @@
         "outbound": "Twitter"
       },
       {
-        "rule_set": ["geoip-bilibili", "geosite-bilibili"],
-        "outbound": "BiliBili"
-      },
-      {
         "rule_set": "geosite-spotify",
         "outbound": "Spotify"
       },
@@ -167,17 +163,10 @@
         "download_detour": "direct"
       },
       {
-        "tag": "geoip-bilibili",
-        "type": "remote",
-        "format": "binary",
-        "url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo-lite/geoip/bilibili.srs",
-        "download_detour": "direct"
-      },
-      {
         "tag": "geoip-cn",
         "type": "remote",
         "format": "binary",
-        "url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geoip/cn.srs",
+        "url": "https://cdn.jsdelivr.net/gh/v2raye/sing-box-rule@main/rule/cncidr.srs",
         "download_detour": "direct"
       },
       {
@@ -220,13 +209,6 @@
         "type": "remote",
         "format": "binary",
         "url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/twitter.srs",
-        "download_detour": "direct"
-      },
-      {
-        "tag": "geosite-bilibili",
-        "type": "remote",
-        "format": "binary",
-        "url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/bilibili.srs",
         "download_detour": "direct"
       },
       {
@@ -330,16 +312,6 @@
         "Singapore",
         "United States"
       ]
-    },
-    {
-      "tag": "BiliBili",
-      "type": "selector",
-      "outbounds": [
-        "direct",
-        "Hong Kong",
-        "Taiwan"
-      ],
-      "default": "direct"
     },
     {
       "tag": "NETFLIX",
