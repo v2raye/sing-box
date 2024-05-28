@@ -180,7 +180,7 @@
         "tag": "geosite-openai",
         "type": "remote",
         "format": "binary",
-        "url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/openai.srs",
+        "url": "https://cdn.jsdelivr.net/gh/v2raye/sing-box-rule@main/rule/ai.srs",
         "download_detour": "direct"
       },
       {
