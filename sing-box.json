@@ -57,6 +57,9 @@
             "domain_regex": "^stun\\..+"
           },
           {
+            "domain": "elink.hq.corp.csg"
+          },
+          {
             "domain_keyword": [
               "stun",
               "httpdns"
