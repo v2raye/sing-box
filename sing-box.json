@@ -79,7 +79,8 @@
           "d.metacubex.one",
 	  "gov.v2raye.com",
 	  "bt.v2raye.com",
-	  "pan.v2raye.com"
+	  "pan.v2raye.com",
+	  "panel.v2raye.com"
         ],
         "outbound": "direct"
       },
