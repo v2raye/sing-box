@@ -80,7 +80,9 @@
 	  "gov.v2raye.com",
 	  "bt.v2raye.com",
 	  "pan.v2raye.com",
-	  "panel.v2raye.com"
+	  "panel.v2raye.com",
+	  "local.adguard.org",
+	  "injections.adguard.org"
         ],
         "outbound": "direct"
       },
