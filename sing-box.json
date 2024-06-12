@@ -22,14 +22,20 @@
     "rules": [
       {
         "outbound": "any",
-        "server": "local"
+        "server": "local",
+	"disable_cache": true
       },
       {
         "query_type": [
           "A",
           "AAAA"
         ],
-        "server": "remote"
+        "server": "remote",
+	"rewrite_ttl": 1
+      },
+      {
+        "rule_set": "geosite-cn",
+        "server": "local"
       }
     ],
     "fakeip": {
@@ -37,22 +43,18 @@
       "inet4_range": "198.18.0.0/15",
       "inet6_range": "fc00::/18"
     },
+    "Final": "google",  
     "independent_cache": true
   },
   "route": {
     "rules": [
       {
-        "type": "logical",
-        "mode": "or",
-        "rules":[
-          {
-            "port":53
-          },
-          {
-            "protocol": "dns"
-          }
-        ],
+        "port": 53,
         "outbound": "dns-out"
+      },
+      {
+        "ip_is_private": true,
+        "outbound": "direct"
       },
       {
         "clash_mode": "Direct",
