@@ -42,7 +42,16 @@
   "route": {
     "rules": [
       {
-        "protocol": "dns",
+        "type": "logical",
+        "mode": "or",
+        "rules":[
+          {
+            "port":53
+          },
+          {
+            "protocol": "dns"
+          }
+        ],
         "outbound": "dns-out"
       },
       {
