@@ -13,7 +13,11 @@
       {
         "tag": "remote",
         "address": "fakeip"
-      }
+      },
+      {
+        "tag": "block",
+        "address": "rcode://success"
+      }	    
     ],
     "rules": [
       {
