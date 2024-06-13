@@ -22,7 +22,7 @@
     "rules": [
       {
         "outbound": "any",
-        "server": "local",
+        "server": "local"
       },
       {
         "query_type": [
@@ -439,7 +439,7 @@
       "inet6_address": "fdfe:dcba:9876::0/126",
       "stack": "mixed",
       "auto_route": true,
-      "sniff": true,
+      "sniff": true
     },
     {
       "type": "socks",
