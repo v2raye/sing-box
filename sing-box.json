@@ -23,7 +23,6 @@
       {
         "outbound": "any",
         "server": "local",
-	"disable_cache": true
       },
       {
         "query_type": [
@@ -32,6 +31,10 @@
         ],
         "server": "remote",
 	"rewrite_ttl": 1
+      },
+      {
+        "rule_set": "geosite-geolocation-!cn",
+        "server": "google"
       },
       {
         "rule_set": "geosite-cn",
@@ -69,19 +72,10 @@
         "mode": "or",
         "rules": [
           {
-            "domain_regex": "^stun\\..+"
-          },
-          {
             "domain": "elink.hq.corp.csg"
           },
           {
-            "domain_keyword": [
-              "stun",
-              "httpdns"
-            ]
-          },
-          {
-            "protocol": "stun"
+            "protocol": "quic"
           }
         ],
         "outbound": "block"
@@ -443,19 +437,12 @@
       "type": "tun",
       "inet4_address": "172.19.0.0/30",
       "inet6_address": "fdfe:dcba:9876::0/126",
-      "stack": "system",
+      "stack": "mixed",
       "auto_route": true,
       "sniff": true,
-      "platform": {
-        "http_proxy": {
-          "enabled": true,
-          "server": "127.0.0.1",
-          "server_port": 7890
-        }
-      }
     },
     {
-      "type": "mixed",
+      "type": "socks",
       "listen": "127.0.0.1",
       "listen_port": 7890,
       "sniff": true
