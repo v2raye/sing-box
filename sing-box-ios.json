@@ -234,8 +234,7 @@
         "update_interval": "1d"
       }
     ],
-    "Final": "Proxy",
-    // "auto_detect_interface": true
+    "Final": "Proxy"
   },
   "outbounds": [
     {
