@@ -47,14 +47,6 @@
           "AAAA"
         ],
         "server": "remote"
-      },
-      {
-        "rule_set": "geosite-geolocation-!cn",
-        "server": "google"
-      },
-      {
-        "rule_set": "geosite-cn",
-        "server": "local"
       }
     ],
     "fakeip": {
