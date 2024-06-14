@@ -104,7 +104,7 @@
         "outbound": "direct"
       },
       {
-        "rule_set": "geosite-openai@ads",
+        "rule_set": ["geosite-openai","geosite-openai@ads"],
         "outbound": "OpenAI"
       },
       {
@@ -158,6 +158,14 @@
         "type": "remote",
         "format": "binary",
         "url": "https://raw.githubusercontent.com/SagerNet/sing-geosite/rule-set/geosite-netflix.srs",
+        "download_detour": "Proxy",
+        "update_interval": "1d"
+      },
+      {
+        "tag": "geosite-openai",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://raw.githubusercontent.com/SagerNet/sing-geosite/rule-set/geosite-openai.srs",
         "download_detour": "Proxy",
         "update_interval": "1d"
       },
@@ -268,17 +276,6 @@
       ]
     },
     {
-      "tag": "Telegram",
-      "type": "selector",
-      "outbounds": [
-        "Hong Kong",
-        "Taiwan",
-        "Japan",
-        "Singapore",
-        "United States"
-      ]
-    },
-    {
       "tag": "NETFLIX",
       "type": "selector",
       "outbounds": [
@@ -314,30 +311,6 @@
         "United States"
       ],
       "default": "United States"
-    },
-    {
-      "tag": "Twitter",
-      "type": "selector",
-      "outbounds": [
-        "Hong Kong",
-        "Taiwan",
-        "Japan",
-        "Singapore",
-        "United States"
-      ],
-      "default": "United States"
-    },
-    {
-      "tag": "Spotify",
-      "type": "selector",
-      "outbounds": [
-        "Hong Kong",
-        "Taiwan",
-        "Japan",
-        "Singapore",
-        "United States"
-      ],
-      "default": "Hong Kong"
     },
     {
       "tag": "Hong Kong",
