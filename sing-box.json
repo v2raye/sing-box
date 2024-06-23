@@ -359,7 +359,7 @@
     {
       "type": "tun",
       "inet4_address": "172.19.0.0/30",
-      "inet6_address": "fd00::1/126",
+      "inet6_address": "fdfe:dcba:9876::1/126",
       "stack": "system",
       "auto_route": true,
       "sniff": true,
