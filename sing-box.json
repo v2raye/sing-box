@@ -300,19 +300,6 @@
       "default": "Singapore"
     },
     {
-      "tag": "Telegram",
-      "type": "selector",
-      "outbounds": [
-        "Hong Kong",
-        "Taiwan",
-        "Japan",
-        "Singapore",
-        "United States",
-	"Europe"     
-      ],
-      "default": "Singapore"
-    },
-    {
       "tag": "Microsoft",
       "type": "selector",
       "outbounds": [
