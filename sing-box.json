@@ -124,8 +124,16 @@
         "outbound": "Google"
       },
       {
-        "rule_set": "geosite-telegram",
-        "outbound": "Telegram"
+        "ip_cidr": ["149.154.160.0/20","91.108.4.0/22","91.108.8.0/22","2001:67c:4e8::/48","2001:b28:f23c::/48"],
+        "outbound": "Europe"
+      },
+      {
+        "ip_cidr": ["91.108.12.0/22","2001:b28:f23d::/48"],
+        "outbound": "United States"
+      },	  
+      {
+        "ip_cidr": ["91.108.16.0/22","91.108.56.0/22","2001:b28:f23f::/48"],
+        "outbound": "Singapore"
       },
       {
         "rule_set": "geosite-netflix",
@@ -154,14 +162,6 @@
         "type": "remote",
         "format": "binary",
         "url": "https://raw.githubusercontent.com/SagerNet/sing-geosite/rule-set/geosite-youtube.srs",
-        "download_detour": "Proxy",
-        "update_interval": "1d"
-      },
-      {
-        "tag": "geosite-telegram",
-        "type": "remote",
-        "format": "binary",
-        "url": "https://raw.githubusercontent.com/SagerNet/sing-geosite/rule-set/geosite-telegram.srs",
         "download_detour": "Proxy",
         "update_interval": "1d"
       },
