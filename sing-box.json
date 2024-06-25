@@ -120,10 +120,6 @@
         "outbound": "OpenAI"
       },
       {
-        "rule_set": ["geosite-google", "geosite-youtube"],
-        "outbound": "Google"
-      },
-      {
         "ip_cidr": ["149.154.160.0/20","91.108.4.0/22","91.108.8.0/22","2001:67c:4e8::/48","2001:b28:f23c::/48"],
         "outbound": "Europe"
       },
@@ -158,14 +154,6 @@
     ],
     "rule_set": [
       {
-        "tag": "geosite-youtube",
-        "type": "remote",
-        "format": "binary",
-        "url": "https://raw.githubusercontent.com/SagerNet/sing-geosite/rule-set/geosite-youtube.srs",
-        "download_detour": "Proxy",
-        "update_interval": "1d"
-      },
-      {
         "tag": "geosite-netflix",
         "type": "remote",
         "format": "binary",
@@ -194,14 +182,6 @@
         "type": "remote",
         "format": "binary",
         "url": "https://raw.githubusercontent.com/SagerNet/sing-geosite/rule-set/geosite-apple.srs",
-        "download_detour": "Proxy",
-        "update_interval": "1d"
-      },
-      {
-        "tag": "geosite-google",
-        "type": "remote",
-        "format": "binary",
-        "url": "https://raw.githubusercontent.com/SagerNet/sing-geosite/rule-set/geosite-google.srs",
         "download_detour": "Proxy",
         "update_interval": "1d"
       },
@@ -260,18 +240,6 @@
         "Singapore",
         "United States",
         "direct"
-      ]
-    },
-    {
-      "tag": "Google",
-      "type": "selector",
-      "outbounds": [
-	"Proxy",
-        "Hong Kong",
-        "Taiwan",
-        "Japan",
-        "Singapore",
-        "United States"
       ]
     },
     {
