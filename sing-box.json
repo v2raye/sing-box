@@ -319,6 +319,7 @@
       "inet6_address": "fdfe:dcba:9876::1/126",
       "stack": "system",
       "auto_route": true,
+      "strict_route": false,
       "sniff": true,
       "platform": {
         "http_proxy": {
