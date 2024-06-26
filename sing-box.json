@@ -12,10 +12,6 @@
         "detour": "direct"
       },
       {
-        "tag": "remote",
-        "address": "fakeip"
-      },
-      {
         "tag": "dns-block",
         "address": "rcode://success"
       }	    
@@ -49,28 +45,14 @@
       },
       {
         "clash_mode": "Global",
-        "server": "remote"
-      },
-      {
-        "query_type": [
-          "A",
-          "AAAA"
-        ],
-        "server": "remote",
-        "rewrite_ttl": 1
+        "server": "google"
       },
       {
         "rule_set": "geosite-cn",
         "server": "local"
       }
     ],
-    "fakeip": {
-      "enabled": true,
-      "inet4_range": "198.18.0.0/15",
-      "inet6_range": "fc00::/18"
-    },
-    "final": "google",  
-    "independent_cache": true
+    "final": "google"
   },
   "route": {
     "rules": [
@@ -96,18 +78,6 @@
         "rules": [
           {
             "domain": "elink.hq.corp.csg"
-          },
-          {
-            "domain_regex": "^stun\\..+"
-          },
-          {
-            "domain_keyword": [
-              "stun",
-              "httpdns"
-            ]
-          },
-          {
-            "protocol": "stun"
           },
           {
             "protocol": "quic"
