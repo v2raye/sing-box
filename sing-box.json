@@ -54,18 +54,14 @@
       "inet4_range": "198.18.0.0/15",
       "inet6_range": "fc00::/18"
     },
-    "Final": "google",  
+    "final": "google",  
     "independent_cache": true
   },
   "route": {
     "rules": [
       {
-        "port": 53,
+        "protocol": "dns",
         "outbound": "dns-out"
-      },
-      {
-        "ip_is_private": true,
-        "outbound": "direct"
       },
       {
         "clash_mode": "Direct",
@@ -226,7 +222,7 @@
         "update_interval": "1d"
       }
     ],
-    "Final": "Proxy",
+    "final": "Proxy",
     "auto_detect_interface": true
   },
   "outbounds": [
