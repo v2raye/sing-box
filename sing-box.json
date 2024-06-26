@@ -4,7 +4,7 @@
       {
         "tag": "google",
         "address": "https://8.8.8.8/dns-query",
-	"detour": "proxy"
+	"detour": "Proxy"
       },
       {
         "tag": "local",
