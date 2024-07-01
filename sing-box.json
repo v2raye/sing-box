@@ -16,6 +16,10 @@
         "detour": "direct"
       },
       {
+        "tag": "fakeip",
+        "address": "fakeip"
+      },
+      {
         "tag": "dns-block",
         "address": "rcode://success"
       }	    
