@@ -62,7 +62,7 @@
           }
         ],
         "server": "google",
-        "client_subnet": "114.114.114.114/24"
+        "client_subnet": "27.109.127.38/24"
       },
       {
         "query_type": [
@@ -80,7 +80,16 @@
     "final": "Proxy",
     "rules": [
       {
-        "protocol": "dns",
+        "type": "logical",
+        "mode": "or",
+        "rules":[
+          {
+            "port":53
+          },
+          {
+            "protocol": "dns"
+          }
+        ],
         "outbound": "dns-out"
       },
       {
