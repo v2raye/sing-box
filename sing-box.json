@@ -72,8 +72,7 @@
         "server": "fakeip"
       }
     ],
-    "independent_cache": true,
-    "strategy": "prefer_ipv4"
+    "independent_cache": true
   },
   "route": {
     "auto_detect_interface": true,
@@ -355,7 +354,7 @@
       "platform": {
         "http_proxy": {
           "enabled": true,
-          "server": "127.0.0.1",
+          "server": "::",
           "server_port": 7890
         }
       }
