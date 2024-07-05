@@ -132,7 +132,7 @@
         "outbound": "direct"
       },
       {
-        "rule_set": ["geosite-openai","geosite-openai@ads"],
+        "rule_set": "geosite-openai",
         "outbound": "OpenAI"
       },
       {
@@ -181,15 +181,7 @@
         "tag": "geosite-openai",
         "type": "remote",
         "format": "binary",
-        "url": "https://raw.githubusercontent.com/SagerNet/sing-geosite/rule-set/geosite-openai.srs",
-        "download_detour": "Proxy",
-        "update_interval": "1d"
-      },
-      {
-        "tag": "geosite-openai@ads",
-        "type": "remote",
-        "format": "binary",
-        "url": "https://raw.githubusercontent.com/SagerNet/sing-geosite/rule-set/geosite-openai@ads.srs",
+        "url": "https://raw.githubusercontent.com/v2raye/sing-box-rule/main/rule/ai.srs",
         "download_detour": "Proxy",
         "update_interval": "1d"
       },
