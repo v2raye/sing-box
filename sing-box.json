@@ -62,7 +62,7 @@
           }
         ],
         "server": "google",
-        "client_subnet": "27.109.127.38/24"
+        "client_subnet": "113.64.0.0/12"
       },
       {
         "query_type": [
