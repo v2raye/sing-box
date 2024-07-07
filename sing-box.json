@@ -111,7 +111,7 @@
             "domain": "elink.hq.corp.csg"
           },
           {
-            "protocol": "quic"
+            "protocol": "stun"
           }
         ],
         "outbound": "block"
