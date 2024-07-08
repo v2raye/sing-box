@@ -108,13 +108,21 @@
         "mode": "or",
         "rules": [
           {
-            "domain": "elink.hq.corp.csg"
+            "port": 853
+          },
+          {
+            "network": "udp",
+            "port": 443
           },
           {
             "protocol": "stun"
           }
         ],
         "outbound": "block"
+      },
+      {
+        "domain": "elink.hq.corp.csg",
+	"outbound": "block"
       },
       {
         "domain": [
