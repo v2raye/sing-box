@@ -121,7 +121,7 @@
         "outbound": "block"
       },
       {
-        "domain": "elink.hq.corp.csg",
+        "domain": ["elink.hq.corp.csg","local.adguard.org"],
 	"outbound": "block"
       },
       {
@@ -133,9 +133,7 @@
 	  "gov.v2raye.com",
 	  "bt.v2raye.com",
 	  "pan.v2raye.com",
-	  "panel.v2raye.com",
-	  "local.adguard.org",
-	  "injections.adguard.org"
+	  "panel.v2raye.com"
         ],
         "outbound": "direct"
       },
