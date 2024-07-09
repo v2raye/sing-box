@@ -3,7 +3,7 @@
     "servers": [
       {
         "tag": "local",
-        "address": "https://gov.v2raye.com/pathpy/my-windows",
+        "address": "https://gov.v2raye.com/pathpy/my-android",
 	"address_resolver": "ali",
         "detour": "direct"
       },
