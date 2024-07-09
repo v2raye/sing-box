@@ -37,7 +37,7 @@
         "server": "local"
       },
       {
-        "rule_set": "geosite-!cn",
+        "rule_set": "geolocation-!cn",
         "query_type": [
           "A",
           "AAAA"
@@ -45,7 +45,7 @@
         "server": "remote"
       },
       {
-        "rule_set": "geosite-!cn",
+        "rule_set": "geolocation-!cn",
         "query_type": [
             "CNAME"
         ],
