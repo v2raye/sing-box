@@ -37,7 +37,7 @@
         "server": "local"
       },
       {
-        "rule_set": "geolocation-!cn",
+        "rule_set": "geosite-!cn",
         "query_type": [
           "A",
           "AAAA"
@@ -45,7 +45,7 @@
         "server": "remote"
       },
       {
-        "rule_set": "geolocation-!cn",
+        "rule_set": "geosite-!cn",
         "query_type": [
             "CNAME"
         ],
@@ -149,7 +149,7 @@
         "outbound": "Microsoft"
       },
       {
-        "rule_set": "geolocation-!cn",
+        "rule_set": "geosite-!cn",
         "outbound": "Proxy"
       },
       {
@@ -191,7 +191,7 @@
         "update_interval": "1d"
       },
       {
-        "tag": "geolocation-!cn",
+        "tag": "geosite-!cn",
         "type": "remote",
         "format": "binary",
         "url": "https://raw.githubusercontent.com/SagerNet/sing-geosite/rule-set/geosite-geolocation-!cn.srs",
