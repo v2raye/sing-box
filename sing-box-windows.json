@@ -18,11 +18,11 @@
       },
       {
         "clash_mode": "Direct",
-        "outbound": "direct"
+        "outbound": "local"
       },
       {
         "clash_mode": "Global",
-        "outbound": "Proxy"
+        "outbound": "google"
       },
       {
         "tag": "remote",
