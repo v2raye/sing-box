@@ -17,14 +17,6 @@
         "detour": "direct"
       },
       {
-        "clash_mode": "Direct",
-        "outbound": "local"
-      },
-      {
-        "clash_mode": "Global",
-        "outbound": "google"
-      },
-      {
         "tag": "remote",
         "address": "fakeip"
       },
@@ -41,6 +33,14 @@
       {
         "outbound": "any",
         "server": "local"
+      },
+      {
+        "clash_mode": "Direct",
+        "outbound": "local"
+      },
+      {
+        "clash_mode": "Global",
+        "outbound": "google"
       },
       {
         "rule_set": "geosite-!cn",
