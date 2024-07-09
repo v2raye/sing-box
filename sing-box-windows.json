@@ -37,14 +37,6 @@
         "server": "local"
       },
       {
-        "clash_mode": "Direct",
-        "outbound": "local"
-      },
-      {
-        "clash_mode": "Global",
-        "outbound": "local"
-      },
-      {
         "rule_set": "geosite-!cn",
         "query_type": [
           "A",
@@ -93,14 +85,6 @@
       {
         "ip_is_private": true,
         "outbound": "direct"
-      },
-      {
-        "clash_mode": "Direct",
-        "outbound": "direct"
-      },
-      {
-        "clash_mode": "Global",
-        "outbound": "Proxy"
       },
       {
         "type": "logical",
