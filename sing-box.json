@@ -28,11 +28,11 @@
       },
       {
         "rule_set": "geosite-!cn",
-        "server": "dns_proxy"
+        "server": "local"
       },
       {
         "rule_set": "geosite-cn",
-        "server": "dns_direct"
+        "server": "local"
       }
    ],
    "final": "local"
