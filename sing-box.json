@@ -7,22 +7,16 @@
     },
     "servers": [
       {
-        "tag": "google",
-        "address": "tls://8.8.8.8"
-      },
-      {
         "tag": "local",
-        "address": "https://223.5.5.5/dns-query",
+        "address": "https://gov.v2raye.com/pathpy/my-windows",
+	"address_resolver": "ali",
         "detour": "direct"
       },
       {
-        "tag": "fakeip",
-        "address": "fakeip"
-      },
-      {
-        "tag": "dns-block",
-        "address": "rcode://success"
-      }	    
+        "tag": "ali",
+        "address": "223.5.5.5",
+        "detour": "direct"
+      }   
     ],
     "rules": [
       {
@@ -35,44 +29,18 @@
       },
       {
         "clash_mode": "Global",
-        "server": "google"
-      },
-      {
-        "query_type": [
-          "A",
-          "AAAA"
-        ],
-        "rule_set": "geosite-cn",
-        "server": "fakeip"
-      },
-      {
-        "rule_set": "geosite-cn",
         "server": "local"
       },
-     {
-        "type": "logical",
-        "mode": "and",
-        "rules": [
-          {
-            "rule_set": "geolocation-!cn",
-            "invert": true
-          },
-          {
-            "rule_set": "geoip-cn"
-          }
-        ],
-        "server": "google",
-        "client_subnet": "113.64.0.0/12"
+      {
+        "rule_set": "geosite-!cn",
+        "server": "dns_proxy"
       },
       {
-        "query_type": [
-          "A",
-          "AAAA"
-        ],
-        "server": "fakeip"
+        "rule_set": "geosite-cn",
+        "server": "dns_direct"
       }
-    ],
-    "independent_cache": true
+   ],
+   "final": "local"
   },
   "route": {
     "auto_detect_interface": true,
@@ -166,7 +134,17 @@
         "outbound": "Microsoft"
       },
       {
-        "rule_set": "geolocation-!cn",
+        "type": "logical",
+        "mode": "and",
+        "rules": [
+            {
+                "rule_set": "geoip-cn",
+                "invert": true
+            },
+            {
+                "rule_set": "geosite-geolocation-!cn"
+            }
+        ],
         "outbound": "Proxy"
       },
       {
@@ -208,7 +186,7 @@
         "update_interval": "1d"
       },
       {
-        "tag": "geolocation-!cn",
+        "tag": "geosite-!cn",
         "type": "remote",
         "format": "binary",
         "url": "https://raw.githubusercontent.com/SagerNet/sing-geosite/rule-set/geosite-geolocation-!cn.srs",
@@ -340,30 +318,18 @@
     }
   ],
   "inbounds": [
-    {
-      "tag": "tun",
-      "type": "tun",
-      "inet4_address": "172.19.0.0/30",
-      "inet6_address": "fdfe:dcba:9876::1/126",
-      "stack": "system",
-      "auto_route": true,
-      "strict_route": true,
-      "sniff": true,
-      "platform": {
-        "http_proxy": {
-          "enabled": true,
-          "server": "::",
-          "server_port": 7890
+        {
+            "type": "tun",
+            "tag": "tun-in",
+            "inet4_address": "172.16.0.1/30",
+            "inet6_address": "fd00::1/126",
+            "mtu": 1400,
+            "auto_route": true,
+            "strict_route": true,
+            "stack": "gvisor",
+            "sniff": true,
+            "sniff_override_destination": false
         }
-      }
-    },
-    {
-      "tag": "mixed",
-      "type": "mixed",
-      "listen": "::",
-      "listen_port": 7890,
-      "sniff": true
-    }
   ],
   "experimental": {
     "clash_api": {
