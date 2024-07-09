@@ -49,7 +49,7 @@
         "query_type": [
             "CNAME"
         ],
-        "server": "google"
+        "server": "local"
       },
       {
         "query_type": [
