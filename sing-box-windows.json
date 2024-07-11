@@ -105,7 +105,7 @@
       },
       {
         "domain": ["elink.hq.corp.csg","local.adguard.org"],
-	      "outbound": "block"
+	"outbound": "block"
       },
       {
         "domain": [
@@ -329,18 +329,18 @@
     }
   ],
   "inbounds": [
-        {
-            "type": "tun",
-            "tag": "tun-in",
-            "inet4_address": "172.16.0.1/30",
-            "inet6_address": "fd00::1/126",
-            "mtu": 1492,
-            "auto_route": true,
-            "strict_route": true,
-            "stack": "system",
-            "sniff": true,
-            "sniff_override_destination": false
-        }
+    {
+        "type": "tun",
+        "tag": "tun-in",
+        "inet4_address": "172.16.0.1/30",
+        "inet6_address": "fd00::1/126",
+        "mtu": 1492,
+        "auto_route": true,
+        "strict_route": true,
+        "stack": "system",
+        "sniff": true,
+        "sniff_override_destination": false
+    }
   ],
   "experimental": {
     "clash_api": {
