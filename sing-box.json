@@ -26,7 +26,7 @@
         "clash_mode": "Global",
         "server": "local"
       }
-   ],
+   ]
   },
   "route": {
     "auto_detect_interface": true,
