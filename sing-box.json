@@ -25,17 +25,8 @@
       {
         "clash_mode": "Global",
         "server": "local"
-      },
-      {
-        "rule_set": "geosite-!cn",
-        "server": "local"
-      },
-      {
-        "rule_set": "geosite-cn",
-        "server": "local"
       }
    ],
-   "final": "local"
   },
   "route": {
     "auto_detect_interface": true,
@@ -313,18 +304,18 @@
     }
   ],
   "inbounds": [
-        {
-            "type": "tun",
-            "tag": "tun-in",
-            "inet4_address": "172.16.0.1/30",
-            "inet6_address": "fd00::1/126",
-            "mtu": 1400,
-            "auto_route": true,
-            "strict_route": true,
-            "stack": "gvisor",
-            "sniff": true,
-            "sniff_override_destination": false
-        }
+   {
+      "type": "tun",
+      "tag": "tun-in",
+      "inet4_address": "172.16.0.1/30",
+      "inet6_address": "fd00::1/126",
+      "mtu": 1400,
+      "auto_route": true,
+      "strict_route": true,
+      "stack": "gvisor",
+      "sniff": true,
+      "sniff_override_destination": false
+   }
   ],
   "experimental": {
     "clash_api": {
