@@ -311,13 +311,6 @@
       "stack": "system",
       "sniff": true,
       "sniff_override_destination": false
-    },
-    {
-      "type": "mixed",
-      "tag": "mixed-in",
-      "listen": "::",
-      "listen_port": 8888,
-      "sniff": true
     }
   ],
   "experimental": {
