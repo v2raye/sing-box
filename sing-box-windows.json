@@ -20,13 +20,16 @@
       {
         "tag": "remote",
         "address": "fakeip"
-      }    
+      },
+      {
+        "tag": "block-dns",
+        "address": "rcode://success"
+      }
     ],
     "rules": [
       {
         "outbound": "any",
-        "server": "ali",
-        "disable_cache": true
+        "server": "ali"
       },
       {
         "query_type": [
@@ -45,12 +48,31 @@
     "independent_cache": true
   },
   "route": {
-    "auto_detect_interface": true,
-    "final": "Proxy",
     "rules": [
+      {
+        "protocol": "dns",
+        "outbound": "dns-out"
+      },
       {
         "port": 53,
         "outbound": "dns-out"
+      },
+      {
+        "type": "logical",
+        "mode": "or",
+        "rules": [
+          {
+            "port": 853
+          },
+          {
+            "network": "udp",
+            "port": 443
+          },
+          {
+            "protocol": "stun"
+          }
+        ],
+        "outbound": "block"
       },
       {
         "ip_is_private": true,
@@ -110,6 +132,8 @@
         "outbound": "direct"
       }
     ],
+    "auto_detect_interface": true,
+    "final": "Proxy",
     "rule_set": [
       {
         "tag": "geosite-netflix",
@@ -281,29 +305,20 @@
       "type": "dns"
     }
   ],
-  "inbounds": [
-    {
-      "type": "tun",
-      "inet4_address": "172.19.0.0/30",
-      "inet6_address": "fdfe:dcba:9876::0/126",
-      "stack": "system",
-      "auto_route": true,
-      "sniff": true,
-      "platform": {
-        "http_proxy": {
-          "enabled": true,
-          "server": "127.0.0.1",
-          "server_port": 7890
+ "inbounds": [
+        {
+            "type": "tun",
+            "tag": "tun-in",
+            "inet4_address": "172.16.0.1/30",
+            "inet6_address": "fd00::1/126",
+            "mtu": 1492,
+            "auto_route": true,
+            "strict_route": true,
+            "stack": "system",
+            "sniff": true,
+            "sniff_override_destination": false
         }
-      }
-    },
-    {
-      "type": "mixed",
-      "listen": "127.0.0.1",
-      "listen_port": 7890,
-      "sniff": true
-    }
-  ],
+    ],
   "experimental": {
     "clash_api": {
       "external_controller": "127.0.0.1:9090",
