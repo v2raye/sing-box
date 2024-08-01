@@ -1,11 +1,6 @@
 
 {
   "dns": {
-    "fakeip": {
-      "enabled": true,
-      "inet4_range": "198.18.0.0/15",
-      "inet6_range": "fc00::/18"
-    },
     "servers": [
       {
         "tag": "google",
@@ -16,14 +11,6 @@
         "tag": "ali",
         "address": "https://223.5.5.5/dns-query",
         "detour": "direct"
-      },
-      {
-        "tag": "remote",
-        "address": "fakeip"
-      },
-      {
-        "tag": "block-dns",
-        "address": "rcode://success"
       }
     ],
     "rules": [
@@ -32,20 +19,25 @@
         "server": "ali"
       },
       {
-        "query_type": [
-          "A",
-          "AAAA"
-        ],
-        "server": "remote",
-        "rewrite_ttl": 1
-      },
-      {
         "rule_set": "geosite-cn",
         "server": "ali"
+      },
+      {
+        "type": "logical",
+        "mode": "and",
+        "rules": [
+          {
+            "rule_set": "geosite-!cn",
+            "invert": true
+          },
+          {
+            "rule_set": "geoip-cn"
+          }
+        ],
+        "server": "google",
+        "client_subnet": "118.114.21.138"
       }
-    ],
-    "final": "google",
-    "independent_cache": true
+    ]
   },
   "route": {
     "rules": [
