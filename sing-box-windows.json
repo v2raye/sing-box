@@ -300,18 +300,27 @@
       "type": "dns"
     }
   ],
- "inbounds": [
+  "inbounds": [
     {
       "type": "tun",
-      "tag": "tun-in",
-      "inet4_address": "172.16.0.1/30",
-      "inet6_address": "fd00::1/126",
-      "mtu": 1492,
-      "auto_route": true,
-      "strict_route": true,
+      "inet4_address": "172.19.0.0/30",
+      "inet6_address": "fdfe:dcba:9876::0/126",
       "stack": "system",
+      "auto_route": true,
       "sniff": true,
-      "sniff_override_destination": false
+      "platform": {
+        "http_proxy": {
+          "enabled": true,
+          "server": "127.0.0.1",
+          "server_port": 8081
+        }
+      }
+    },
+    {
+      "type": "mixed",
+      "listen": "127.0.0.1",
+      "listen_port": 8082,
+      "sniff": true
     }
   ],
   "experimental": {
