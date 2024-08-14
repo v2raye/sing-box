@@ -21,10 +21,6 @@
       {
         "tag": "remote",
         "address": "fakeip"
-      },
-      {
-        "tag": "block-dns",
-        "address": "rcode://success"
       }
     ],
     "rules": [
@@ -32,10 +28,6 @@
         "outbound": "any",
         "server": "local",
         "disable_cache": true
-      },
-      {
-        "query_type": "HTTPS",
-        "server": "block-dns"
       },
       {
         "inbound": "tun",
