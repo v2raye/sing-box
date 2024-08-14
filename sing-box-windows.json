@@ -30,14 +30,20 @@
     "rules": [
       {
         "outbound": "any",
-        "server": "local"
+        "server": "local",
+        "disable_cache": true
       },
       {
+        "query_type": "HTTPS",
+        "server": "block-dns"
+      },
+      {
+        "inbound": "tun",
         "query_type": [
           "A",
           "AAAA"
         ],
-        "server": "remote",
+        "server": "fakeip",
         "rewrite_ttl": 1
       },
       {
@@ -55,8 +61,8 @@
         "outbound": "dns-out"
       },
       {
-        "port": 53,
-        "outbound": "dns-out"
+        "ip_is_private": true,
+        "outbound": "direct"
       },
       {
         "type": "logical",
@@ -76,10 +82,6 @@
         "outbound": "block"
       },
       {
-        "ip_is_private": true,
-        "outbound": "direct"
-      },
-      {
         "domain": ["elink.hq.corp.csg","local.adguard.org"],
 	"outbound": "block"
       },
@@ -89,10 +91,10 @@
           "yacd.metacubex.one",
           "yacd.haishan.me",
           "d.metacubex.one",
-	      "gov.v2raye.com",
-	      "bt.v2raye.com",
-	      "pan.v2raye.com",
-	      "panel.v2raye.com"
+	  "gov.v2raye.com",
+	  "bt.v2raye.com",
+	  "pan.v2raye.com",
+	  "panel.v2raye.com"
         ],
         "outbound": "direct"
       },
@@ -302,6 +304,7 @@
   ],
   "inbounds": [
     {
+      "tag": "tun",
       "type": "tun",
       "inet4_address": "172.19.0.0/30",
       "inet6_address": "fdfe:dcba:9876::0/126",
