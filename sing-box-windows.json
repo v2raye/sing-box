@@ -26,24 +26,20 @@
     "rules": [
       {
         "outbound": "any",
-        "server": "local",
-        "disable_cache": true
+        "server": "local"
       },
       {
-        "inbound": "tun",
         "query_type": [
           "A",
           "AAAA"
         ],
-        "server": "fakeip",
-        "rewrite_ttl": 1
+        "server": "remote"
       },
       {
         "rule_set": "geosite-cn",
         "server": "local"
       }
     ],
-    "final": "local",
     "independent_cache": true
   },
   "route": {
@@ -296,7 +292,6 @@
   ],
   "inbounds": [
     {
-      "tag": "tun",
       "type": "tun",
       "inet4_address": "172.19.0.0/30",
       "inet6_address": "fdfe:dcba:9876::0/126",
