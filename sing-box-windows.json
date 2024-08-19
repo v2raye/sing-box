@@ -8,7 +8,7 @@
     },
     "servers": [
       {
-        "tag": "local",
+        "tag": "adh",
         "address": "https://gov.v2raye.com/pathpy/my-windows",
         "address_resolver": "dns_resolver",
         "detour": "direct"
@@ -26,7 +26,7 @@
     "rules": [
       {
         "outbound": "any",
-        "server": "local"
+        "server": "adh"
       },
       {
         "query_type": [
@@ -34,10 +34,6 @@
           "AAAA"
         ],
         "server": "remote"
-      },
-      {
-        "rule_set": "geosite-cn",
-        "server": "local"
       }
     ],
     "independent_cache": true
@@ -57,6 +53,7 @@
         "mode": "or",
         "rules": [
           {
+            "network": "tcp",
             "port": 853
           },
           {
@@ -64,14 +61,10 @@
             "port": 443
           },
           {
-            "protocol": "stun"
+            "domain": ["elink.hq.corp.csg","local.adguard.org"]
           }
         ],
         "outbound": "block"
-      },
-      {
-        "domain": ["elink.hq.corp.csg","local.adguard.org"],
-	"outbound": "block"
       },
       {
         "domain": [
