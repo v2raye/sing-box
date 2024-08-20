@@ -19,7 +19,8 @@ const tagRegexMap = {
   'Japan': /日本|jp|japan|🇯🇵/i,
   'Singapore': /^(?!.*(?:us)).*(新|sg|singapore|🇸🇬)/i,
   'United States': /美|us|unitedstates|united states|🇺🇸/i,
-  'Europe': /德国|法国|英国|荷兰|de|fr|gb|nl|germany|france|Great Britain|nederland|🇩🇪|🇫🇷|🇬🇧|🇳🇱/i
+  'Europe': /德国|法国|英国|荷兰|de|fr|gb|nl|germany|france|Great Britain|nederland|🇩🇪|🇫🇷|🇬🇧|🇳🇱/i,
+  'Enet': /Enet/i
 };
 
 config.outbounds.forEach(outbound => {
