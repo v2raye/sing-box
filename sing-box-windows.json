@@ -80,6 +80,13 @@
         "outbound": "direct"
       },
       {
+        "domain": [
+	  "hxd.as174.com",
+	  "emby.as174.com"
+        ],
+        "outbound": "Emby"
+      },
+      {
         "rule_set": "geosite-openai",
         "outbound": "OpenAI"
       },
