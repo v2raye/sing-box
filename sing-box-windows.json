@@ -241,6 +241,13 @@
       "default": "United States"
     },
     {
+      "tag": "Emby",
+      "type": "selector",
+      "outbounds": [
+        "Enet"
+      ]
+    },
+    {
       "tag": "Hong Kong",
       "type": "selector",
       "outbounds": []
@@ -267,6 +274,11 @@
     },
     {
       "tag": "Europe",
+      "type": "selector",
+      "outbounds": []
+    },
+    {
+      "tag": "Enet",
       "type": "selector",
       "outbounds": []
     },
