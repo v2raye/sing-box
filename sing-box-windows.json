@@ -49,21 +49,7 @@
         "outbound": "direct"
       },
       {
-        "type": "logical",
-        "mode": "or",
-        "rules": [
-          {
-            "network": "tcp",
-            "port": 853
-          },
-          {
-            "network": "udp",
-            "port": 443
-          },
-          {
-            "domain": ["elink.hq.corp.csg","local.adguard.org"]
-          }
-        ],
+        "domain": ["elink.hq.corp.csg","local.adguard.org"],
         "outbound": "block"
       },
       {
