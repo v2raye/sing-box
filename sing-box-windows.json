@@ -25,6 +25,10 @@
         "detour": "direct"
       },
       {
+        "tag": "dns_success",
+        "address": "rcode://success"
+      },
+      {
         "tag": "dns_refused",
         "address": "rcode://refused"
       },
@@ -36,7 +40,7 @@
     "rules": [
       {
         "outbound": "any",
-        "server": "adh"
+        "server": "ali"
       },
      {
         "rule_set": "geosite-!cn",
@@ -336,10 +340,12 @@
       "type": "tun",
       "inet4_address": "172.19.0.0/30",
       "inet6_address": "fdfe:dcba:9876::0/126",
+      "mtu": 1492,
       "stack": "system",
       "auto_route": true,
       "strict_route": true,
-      "sniff": true
+      "sniff": true,
+      "sniff_override_destination": false
     }
   ],
   "experimental": {
