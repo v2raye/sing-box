@@ -25,10 +25,6 @@
         "detour": "direct"
       },
       {
-        "tag": "dns_success",
-        "address": "rcode://success"
-      },
-      {
         "tag": "dns_refused",
         "address": "rcode://refused"
       },
@@ -72,6 +68,7 @@
         "disable_cache": true
      }
     ],
+    "final": "adh",
     "independent_cache": true
   },
   "route": {
@@ -95,7 +92,7 @@
         "outbound": "block"
       },
       {
-        "domain": ["elink.hq.corp.csg","local.adguard.org"],
+        "domain": "elink.hq.corp.csg",
         "outbound": "block"
       },
       {
