@@ -64,7 +64,6 @@
   "route": {
     "rules": [
       {
-      {
         "type": "logical",
         "mode": "or",
         "rules": [
