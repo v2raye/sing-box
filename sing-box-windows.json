@@ -9,7 +9,7 @@
     "servers": [
       {
         "tag": "adh",
-        "address": "https://gov.v2raye.com/pathpy/my-windows",
+        "address": "h3://hk1.pro.xns.one/RAzoOyGcdkE/default/dns-query",
 	"address_resolver": "dns_resolver",      
         "detour": "direct"
       },
