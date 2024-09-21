@@ -65,7 +65,7 @@
   "route": {
     "rules": [
       {
-        "inbound": "dns-in",
+        "protocol": "dns",
         "outbound": "dns-out"
       },
       {
@@ -302,12 +302,6 @@
   ],
   "inbounds": [
     {
-      "type": "direct",
-      "tag": "dns-in",
-      "listen": "127.0.0.1",
-      "listen_port": 53
-    },
-    {
       "type": "tun",
       "inet4_address": "172.19.0.0/30",
       "inet6_address": "fdfe:dcba:9876::0/126",
@@ -316,14 +310,7 @@
       "auto_route": true,
       "strict_route": true,
       "sniff": true,
-      "sniff_override_destination": false,
-      "platform": {
-        "http_proxy": {
-          "enabled": true,
-          "server": "127.0.0.1",
-          "server_port": 2080
-        }
-      }
+      "sniff_override_destination": false
     }
   ],
   "experimental": {
