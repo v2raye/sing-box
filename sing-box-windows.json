@@ -64,7 +64,7 @@
       "disable_cache": true
      }
     ],
-    "final": "dns_proxy",
+    "final": "dns_direct",
     "independent_cache": true
   },
   "route": {
@@ -76,6 +76,16 @@
       {
         "ip_is_private": true,
         "outbound": "direct"
+      },            
+      {
+        "port": 853,
+        "network": "tcp",
+        "outbound": "block"
+      },
+      {
+        "port": 443,
+        "network": "udp",
+        "outbound": "block"
       },
       {
         "domain": "elink.hq.corp.csg",
