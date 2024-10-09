@@ -8,9 +8,15 @@
     },
     "servers": [
       {
-        "tag": "adh",
-        "address": "h3://hk1.pro.xns.one/RAzoOyGcdkE/default/dns-query",
-	"address_resolver": "dns_resolver",      
+        "tag": "dns_proxy",
+        "address": "https://1.1.1.1/dns-query",
+        "address_resolver": "dns_resolver",
+        "detour": "proxy"
+      },
+      {
+        "tag": "dns_direct",
+        "address": "https://dns.alidns.com/dns-query",
+        "address_resolver": "dns_resolver",
         "detour": "direct"
       },
       {
@@ -34,8 +40,7 @@
     "rules": [
       {
         "outbound": "any",
-        "server": "adh",
-        "disable_cache": true 
+        "server": "dns_resolver"
       },
      {
         "rule_set": "geosite-!cn",
@@ -46,11 +51,11 @@
      {
         "rule_set": "geosite-!cn",
         "query_type": ["CNAME"],
-       "server": "adh"
+       "server": "dns_proxy"
      },
      {
        "rule_set": "geosite-cn",
-       "server": "adh"
+       "server": "dns_direct"
      },
      {
       "query_type": ["A","AAAA","CNAME"],
@@ -59,7 +64,7 @@
       "disable_cache": true
      }
     ],
-    "final": "adh",
+    "final": "dns_proxy",
     "independent_cache": true
   },
   "route": {
