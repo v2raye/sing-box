@@ -40,7 +40,7 @@
     "rules": [
       {
         "outbound": "any",
-        "server": "dns_resolver"
+        "server": "dns_direct"
       },
      {
         "rule_set": "geosite-!cn",
