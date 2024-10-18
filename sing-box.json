@@ -2,29 +2,35 @@
   "dns": {
     "servers": [
       {
-        "tag": "local",
-        "address": "https://gov.v2raye.com/pathpy/my-android",
-	"address_resolver": "ali",
+        "tag": "dns_proxy",
+        "address": "https://1.1.1.1/dns-query",
+        "address_resolver": "dns_resolver",
+        "detour": "proxy"
+      },
+      {
+        "tag": "dns_direct",
+        "address": "https://dns.alidns.com/dns-query",
+        "address_resolver": "dns_resolver",
         "detour": "direct"
       },
       {
-        "tag": "ali",
+        "tag": "dns_resolver",
         "address": "223.5.5.5",
         "detour": "direct"
-      }   
+      }
     ],
     "rules": [
       {
         "outbound": "any",
-        "server": "local"
+        "server": "dns_direct"
       },
       {
         "clash_mode": "Direct",
-        "server": "local"
+        "server": "dns_direct"
       },
       {
         "clash_mode": "Global",
-        "server": "local"
+        "server": "dns_direct"
       }
    ]
   },
@@ -33,16 +39,7 @@
     "final": "Proxy",
     "rules": [
       {
-        "type": "logical",
-        "mode": "or",
-        "rules":[
-          {
-            "port":53
-          },
-          {
-            "protocol": "dns"
-          }
-        ],
+        "protocol": "dns",
         "outbound": "dns-out"
       },
       {
@@ -58,20 +55,8 @@
         "outbound": "Proxy"
       },
       {
-        "type": "logical",
-        "mode": "or",
-        "rules": [
-          {
-            "port": 853
-          },
-          {
-            "network": "udp",
-            "port": 443
-          },
-          {
-            "protocol": "stun"
-          }
-        ],
+        "port": [443, 853],
+        "network": "udp",
         "outbound": "block"
       },
       {
@@ -309,11 +294,9 @@
       "tag": "tun-in",
       "interface_name": "tun0",
       "address": ["172.19.0.1/30","fdfe:dcba:9876::1/126"],
-      "route_address": ["0.0.0.0/1","128.0.0.0/1","::/1","8000::/1"],
-      "route_exclude_address": ["192.168.0.0/16","fc00::/7"],
       "auto_route": true,
       "strict_route": true,
-      "stack": "gvisor",
+      "stack": "mixed",
       "sniff": true,
       "sniff_override_destination": false
    }
