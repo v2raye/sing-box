@@ -3,43 +3,70 @@
     "servers": [
       {
         "tag": "dns_proxy",
-        "address": "https://1.1.1.1/dns-query",
-        "address_resolver": "dns_resolver",
-        "detour": "proxy"
+        "address": "tls://8.8.8.8",
+        "detour": "Proxy"
       },
       {
         "tag": "dns_direct",
-        "address": "https://dns.alidns.com/dns-query",
-        "address_resolver": "dns_resolver",
+        "address": "https://223.5.5.5/dns-query",
         "detour": "direct"
       },
       {
-        "tag": "dns_resolver",
-        "address": "223.5.5.5",
-        "detour": "direct"
+        "tag": "dns_fakeip",
+        "address": "fakeip"
+      },
+      {
+        "tag": "block",
+        "address": "rcode://success"
       }
     ],
     "rules": [
       {
         "outbound": "any",
+        "server": "dns_direct",
+        "disable_cache": true
+      },
+      {
+        "rule_set": "geosite-cn",
         "server": "dns_direct"
       },
       {
-        "clash_mode": "Direct",
+        "clash_mode": "direct",
         "server": "dns_direct"
       },
       {
-        "clash_mode": "Global",
-        "server": "dns_direct"
+        "clash_mode": "global",
+        "server": "dns_proxy"
+      },
+      {
+        "rule_set": "geosite-!cn",
+        "query_type": ["A", "AAAA"],
+        "server": "dns_fakeip",
+        "rewrite_ttl": 1
       }
-   ]
+   ],
+    "final": "dns_direct",
+    "fakeip": {
+      "enabled": true,
+      "inet4_range": "198.18.0.0/15",
+      "inet6_range": "fc00::/18"
+    }
   },
   "route": {
     "auto_detect_interface": true,
     "final": "Proxy",
     "rules": [
       {
-        "protocol": "dns",
+        "type": "logical",
+        "mode": "or",
+        "rules": [
+          {
+            "port": 53
+          },
+          {
+            "protocol": "dns"
+          }
+        ],
         "outbound": "dns-out"
       },
       {
@@ -53,11 +80,6 @@
       {
         "clash_mode": "Global",
         "outbound": "Proxy"
-      },
-      {
-        "port": [443, 853],
-        "network": "udp",
-        "outbound": "block"
       },
       {
         "domain": ["elink.hq.corp.csg","local.adguard.org"],
@@ -105,17 +127,7 @@
         "outbound": "Microsoft"
       },
       {
-        "type": "logical",
-        "mode": "and",
-        "rules": [
-            {
-                "rule_set": "geoip-cn",
-                "invert": true
-            },
-            {
-                "rule_set": "geosite-!cn"
-            }
-        ],
+        "rule_set": "geosite-!cn",
         "outbound": "Proxy"
       },
       {
@@ -291,15 +303,28 @@
   "inbounds": [
    {
       "type": "tun",
-      "tag": "tun-in",
-      "interface_name": "tun0",
       "address": ["172.19.0.1/30","fdfe:dcba:9876::1/126"],
       "auto_route": true,
-      "strict_route": true,
+      "strict_route": false,
       "stack": "mixed",
       "sniff": true,
+      "endpoint_independent_nat": false,
       "sniff_override_destination": false
-   }
+      "platform": {
+        "http_proxy": {
+          "enabled": true,
+          "server": "127.0.0.1",
+          "server_port": 7890
+        }
+      }
+   },
+    {
+      "type": "mixed",
+      "listen": "127.0.0.1",
+      "listen_port": 7890,
+      "sniff": true,
+      "users": []
+    }
   ],
   "experimental": {
     "clash_api": {
@@ -311,8 +336,7 @@
     },
   "cache_file": {
     "enabled": true,
-    "store_fakeip": true,
-    "store_rdrc": true
+    "store_fakeip": true
     }
   },
   "log": {
