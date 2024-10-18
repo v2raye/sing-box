@@ -309,7 +309,7 @@
       "stack": "mixed",
       "sniff": true,
       "endpoint_independent_nat": false,
-      "sniff_override_destination": false
+      "sniff_override_destination": false,
       "platform": {
         "http_proxy": {
           "enabled": true,
