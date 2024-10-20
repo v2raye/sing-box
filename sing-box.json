@@ -3,8 +3,7 @@
     "servers": [
       {
         "tag": "dns_proxy",
-        "address": "tls://8.8.8.8",
-        "detour": "Proxy"
+        "address": "tls://8.8.8.8"
       },
       {
         "tag": "dns_direct",
@@ -23,8 +22,7 @@
     "rules": [
       {
         "outbound": "any",
-        "server": "dns_direct",
-        "disable_cache": true
+        "server": "dns_direct"
       },
       {
         "rule_set": "geosite-cn",
@@ -39,13 +37,30 @@
         "server": "dns_proxy"
       },
       {
-        "rule_set": "geosite-!cn",
+        "rule_set": "geosite-cn",
         "query_type": ["A", "AAAA"],
-        "server": "dns_fakeip",
-        "rewrite_ttl": 1
+        "server": "dns_fakeip"
+      },
+      {
+        "rule_set": "geosite-cn",
+        "server": "dns_direct"
+      },
+      {
+        "type": "logical",
+        "mode": "and",
+        "rules": [
+          {
+            "rule_set": "geosite-!cn",
+            "invert": true
+          },
+          {
+            "rule_set": "geoip-cn"
+          }
+        ],
+        "server": "dns_proxy",
+        "client_subnet": "118.114.21.138"
       }
    ],
-    "final": "dns_direct",
     "fakeip": {
       "enabled": true,
       "inet4_range": "198.18.0.0/15",
@@ -82,7 +97,7 @@
         "outbound": "Proxy"
       },
       {
-        "domain": ["elink.hq.corp.csg","local.adguard.org"],
+        "domain": "elink.hq.corp.csg",
 	"outbound": "block"
       },
       {
@@ -119,10 +134,6 @@
         "outbound": "NETFLIX"
       },
       {
-        "rule_set": "geosite-apple",
-        "outbound": "Apple"
-      },
-      {
         "rule_set": "geosite-microsoft",
         "outbound": "Microsoft"
       },
@@ -149,14 +160,6 @@
         "type": "remote",
         "format": "binary",
         "url": "https://raw.githubusercontent.com/v2raye/sing-box-rule/main/rule/ai.srs",
-        "download_detour": "Proxy",
-        "update_interval": "1d"
-      },
-      {
-        "tag": "geosite-apple",
-        "type": "remote",
-        "format": "binary",
-        "url": "https://raw.githubusercontent.com/SagerNet/sing-geosite/rule-set/geosite-apple.srs",
         "download_detour": "Proxy",
         "update_interval": "1d"
       },
@@ -205,19 +208,6 @@
         "Singapore",
         "United States",
         "direct"
-      ]
-    },
-    {
-      "tag": "Apple",
-      "type": "selector",
-      "outbounds": [
-        "direct",
-	"Proxy",
-        "Hong Kong",
-        "Taiwan",
-        "Japan",
-        "Singapore",
-        "United States"
       ]
     },
     {
@@ -305,10 +295,9 @@
       "type": "tun",
       "address": ["172.19.0.1/30","fdfe:dcba:9876::1/126"],
       "auto_route": true,
-      "strict_route": false,
+      "strict_route": true,
       "stack": "system",
       "sniff": true,
-      "endpoint_independent_nat": false,
       "sniff_override_destination": false,
       "platform": {
         "http_proxy": {
