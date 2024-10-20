@@ -97,10 +97,6 @@
         "outbound": "Proxy"
       },
       {
-        "domain": "elink.hq.corp.csg",
-	"outbound": "block"
-      },
-      {
         "domain": [
           "clash.razord.top",
           "yacd.metacubex.one",
