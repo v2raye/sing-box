@@ -294,22 +294,8 @@
       "strict_route": true,
       "stack": "system",
       "sniff": true,
-      "sniff_override_destination": false,
-      "platform": {
-        "http_proxy": {
-          "enabled": true,
-          "server": "127.0.0.1",
-          "server_port": 7890
-        }
-      }
-   },
-    {
-      "type": "mixed",
-      "listen": "127.0.0.1",
-      "listen_port": 7890,
-      "sniff": true,
-      "users": []
-    }
+      "sniff_override_destination": false
+   }
   ],
   "experimental": {
     "clash_api": {
