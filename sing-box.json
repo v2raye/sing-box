@@ -1,76 +1,77 @@
 {
   "dns": {
+    "fakeip": {
+      "enabled": true,
+      "inet4_range": "198.18.0.0/15",
+      "inet6_range": "fc00::/18"
+    },
     "servers": [
       {
-        "tag": "dns_proxy",
-        "address": "tls://8.8.8.8"
+        "tag": "google",
+        "address": "https://8.8.8.8/dns-query",
+        "detour": "proxy"
       },
       {
-        "tag": "dns_direct",
+        "tag": "ali",
         "address": "https://223.5.5.5/dns-query",
         "detour": "direct"
       },
       {
-        "tag": "dns_fakeip",
+        "tag": "fakeip",
         "address": "fakeip"
-      },
-      {
-        "tag": "block",
-        "address": "rcode://success"
       }
     ],
     "rules": [
       {
         "outbound": "any",
-        "server": "dns_direct"
-      },
-      {
-        "rule_set": "geosite-cn",
-        "server": "dns_direct"
+        "action": "route",
+        "server": "ali",
+        "disable_cache": true
       },
       {
         "clash_mode": "Direct",
-        "server": "dns_direct"
+        "action": "route",
+        "server": "ali"
       },
       {
         "clash_mode": "Global",
-        "server": "dns_proxy"
+        "action": "route",
+        "server": "fakeip"
       },
       {
-        "rule_set": "geosite-cn",
-        "query_type": ["A", "AAAA"],
-        "server": "dns_fakeip"
+        "query_type": "HTTPS",
+        "action": "reject"
       },
       {
-        "rule_set": "geosite-cn",
-        "server": "dns_direct"
-      },
-      {
-        "type": "logical",
-        "mode": "and",
-        "rules": [
-          {
-            "rule_set": "geosite-!cn",
-            "invert": true
-          },
-          {
-            "rule_set": "geoip-cn"
-          }
+        "query_type": [
+          "A",
+          "AAAA"
         ],
-        "server": "dns_proxy",
-        "client_subnet": "118.114.21.138"
+        "action": "route",
+        "server": "fakeip",
+        "rewrite_ttl": 1
+      },
+      {
+        "rule_set": "cn_domain",
+        "action": "route",
+        "server": "ali"
       }
-   ],
-    "fakeip": {
-      "enabled": true,
-      "inet4_range": "198.18.0.0/15",
-      "inet6_range": "fc00::/18"
-    }
+    ],
+    "final": "google",
+    "independent_cache": true
   },
   "route": {
-    "auto_detect_interface": true,
-    "final": "Proxy",
     "rules": [
+      {
+        "action": "sniff",
+        "sniffer": [
+          "http",
+          "tls",
+          "quic",
+          "dns"
+        ],
+        "timeout": "500ms"
+      },
       {
         "type": "logical",
         "mode": "or",
@@ -82,116 +83,170 @@
             "protocol": "dns"
           }
         ],
-        "outbound": "dns-out"
+        "action": "hijack-dns"
       },
       {
         "ip_is_private": true,
-        "outbound": "direct"
-      },
-      {
-        "clash_mode": "Direct",
+        "action": "route",
         "outbound": "direct"
       },
       {
         "clash_mode": "Global",
-        "outbound": "Proxy"
+        "action": "route",
+        "outbound": "GLOBAL"
       },
       {
-        "domain": [
-          "clash.razord.top",
-          "yacd.metacubex.one",
-          "yacd.haishan.me",
-          "d.metacubex.one",
-	  "gov.v2raye.com",
-	  "bt.v2raye.com",
-	  "pan.v2raye.com",
-	  "panel.v2raye.com"
-        ],
+        "clash_mode": "Direct",
+        "action": "route",
         "outbound": "direct"
       },
       {
-        "rule_set": "geosite-openai",
+        "rule_set": "youtube_domain",
+        "action": "route",
+        "outbound": "Youtube"
+      },
+      {
+        "rule_set": "openai_domain",
+        "action": "route",
         "outbound": "OpenAI"
       },
       {
-        "ip_cidr": ["149.154.160.0/20","91.108.4.0/22","91.108.8.0/22","2001:67c:4e8::/48","2001:b28:f23c::/48"],
-        "outbound": "Europe"
-      },
-      {
-        "ip_cidr": ["91.108.12.0/22","2001:b28:f23d::/48"],
-        "outbound": "United States"
-      },	  
-      {
-        "ip_cidr": ["91.108.16.0/22","91.108.56.0/22","2001:b28:f23f::/48"],
-        "outbound": "Singapore"
-      },
-      {
-        "rule_set": "geosite-netflix",
-        "outbound": "NETFLIX"
-      },
-      {
-        "rule_set": "geosite-microsoft",
-        "outbound": "Microsoft"
-      },
-      {
-        "rule_set": "geosite-!cn",
+        "type": "logical",
+        "mode": "and",
+        "rules": [
+          {
+            "rule_set": "proxy_domain"
+          },
+          {
+            "invert": true,
+            "rule_set": [
+              "cn_domain",
+              "apple_domain",
+              "google_domain",
+              "telegram_domain"
+            ]
+          }
+        ],
+        "action": "route",
         "outbound": "Proxy"
       },
       {
-        "rule_set": ["geosite-cn", "geoip-cn"],
+        "action": "resolve"
+      },
+      {
+        "rule_set": [
+          "telegram_ip",
+          "telegram_domain"
+        ],
+        "action": "route",
+        "outbound": "Telegram"
+      },
+      {
+        "rule_set": [
+          "google_ip",
+          "google_domain"
+        ],
+        "action": "route",
+        "outbound": "Google"
+      },
+      {
+        "rule_set": [
+          "apple_ip",
+          "apple_domain"
+        ],
+        "action": "route",
+        "outbound": "Apple"
+      },
+      {
+        "rule_set": [
+          "cn_ip",
+          "cn_domain"
+        ],
+        "action": "route",
         "outbound": "direct"
       }
     ],
     "rule_set": [
       {
-        "tag": "geosite-netflix",
+        "tag": "apple_ip",
         "type": "remote",
         "format": "binary",
-        "url": "https://raw.githubusercontent.com/SagerNet/sing-geosite/rule-set/geosite-netflix.srs",
-        "download_detour": "Proxy",
-        "update_interval": "1d"
+        "url": "https://ghfast.top/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/refs/heads/sing/geo-lite/geoip/apple.srs",
+        "download_detour": "direct"
       },
       {
-        "tag": "geosite-openai",
+        "tag": "apple_domain",
         "type": "remote",
         "format": "binary",
-        "url": "https://raw.githubusercontent.com/v2raye/sing-box-rule/main/rule/ai.srs",
-        "download_detour": "Proxy",
-        "update_interval": "1d"
+        "url": "https://ghfast.top/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/refs/heads/sing/geo-lite/geosite/apple.srs",
+        "download_detour": "direct"
       },
       {
-        "tag": "geosite-microsoft",
+        "tag": "cn_ip",
         "type": "remote",
         "format": "binary",
-        "url": "https://raw.githubusercontent.com/SagerNet/sing-geosite/rule-set/geosite-microsoft.srs",
-        "download_detour": "Proxy",
-        "update_interval": "1d"
+        "url": "https://ghfast.top/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/refs/heads/sing/geo/geoip/cn.srs",
+        "download_detour": "direct"
       },
       {
-        "tag": "geosite-!cn",
+        "tag": "cn_domain",
         "type": "remote",
         "format": "binary",
-        "url": "https://raw.githubusercontent.com/SagerNet/sing-geosite/rule-set/geosite-geolocation-!cn.srs",
-        "download_detour": "Proxy",
-        "update_interval": "1d"
+        "url": "https://ghfast.top/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/refs/heads/sing/geo-lite/geosite/cn.srs",
+        "download_detour": "direct"
       },
       {
-        "tag": "geosite-cn",
+        "tag": "google_ip",
         "type": "remote",
         "format": "binary",
-        "url": "https://raw.githubusercontent.com/SagerNet/sing-geosite/rule-set/geosite-cn.srs",
-        "download_detour": "Proxy",
-        "update_interval": "1d"
+        "url": "https://ghfast.top/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/refs/heads/sing/geo-lite/geoip/google.srs",
+        "download_detour": "direct"
       },
       {
-        "tag": "geoip-cn",
+        "tag": "google_domain",
         "type": "remote",
         "format": "binary",
-        "url": "https://raw.githubusercontent.com/v2raye/sing-box-rule/main/rule/cncidr.srs",
-        "download_detour": "Proxy",
-        "update_interval": "1d"
+        "url": "https://ghfast.top/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/refs/heads/sing/geo-lite/geosite/google.srs",
+        "download_detour": "direct"
+      },
+      {
+        "tag": "openai_domain",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://ghfast.top/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/refs/heads/sing/geo/geosite/openai.srs",
+        "download_detour": "direct"
+      },
+      {
+        "tag": "proxy_domain",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://ghfast.top/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/refs/heads/sing/geo/geosite/geolocation-!cn.srs",
+        "download_detour": "direct"
+      },
+      {
+        "tag": "telegram_ip",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://ghfast.top/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/refs/heads/sing/geo-lite/geoip/telegram.srs",
+        "download_detour": "direct"
+      },
+      {
+        "tag": "telegram_domain",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://ghfast.top/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/refs/heads/sing/geo-lite/geosite/telegram.srs",
+        "download_detour": "direct"
+      },
+      {
+        "tag": "youtube_domain",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://ghfast.top/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/refs/heads/sing/geo-lite/geosite/youtube.srs",
+        "download_detour": "direct"
       }
-    ]
+    ],
+    "final": "final",
+    "auto_detect_interface": true
   },
   "outbounds": [
     {
@@ -207,7 +262,7 @@
       ]
     },
     {
-      "tag": "NETFLIX",
+      "tag": "Google",
       "type": "selector",
       "outbounds": [
         "Hong Kong",
@@ -216,20 +271,31 @@
         "Singapore",
         "United States"
       ],
-      "default": "Singapore"
+      "default": "United States"
     },
     {
-      "tag": "Microsoft",
+      "tag": "Youtube",
       "type": "selector",
       "outbounds": [
-        "direct",
         "Hong Kong",
         "Taiwan",
         "Japan",
         "Singapore",
         "United States"
       ],
-      "default": "direct"
+      "default": "United States"
+    },
+    {
+      "tag": "Telegram",
+      "type": "selector",
+      "outbounds": [
+        "Hong Kong",
+        "Taiwan",
+        "Japan",
+        "Singapore",
+        "United States"
+      ],
+      "default": "United States"
     },
     {
       "tag": "OpenAI",
@@ -276,26 +342,30 @@
     {
       "tag": "direct",
       "type": "direct"
-    },
-    {
-      "tag": "block",
-      "type": "block"
-    },
-    {
-      "tag": "dns-out",
-      "type": "dns"
     }
   ],
   "inbounds": [
-   {
+    {
       "type": "tun",
-      "address": ["172.19.0.1/30","fdfe:dcba:9876::1/126"],
+      "address": [
+        "172.19.0.0/30",
+        "fdfe:dcba:9876::0/126"
+      ],
+      "stack": "mixed",
       "auto_route": true,
-      "strict_route": true,
-      "stack": "system",
-      "sniff": true,
-      "sniff_override_destination": false
-   }
+      "platform": {
+        "http_proxy": {
+          "enabled": true,
+          "server": "127.0.0.1",
+          "server_port": 7890
+        }
+      }
+    },
+    {
+      "type": "mixed",
+      "listen": "127.0.0.1",
+      "listen_port": 7890
+    }
   ],
   "experimental": {
     "clash_api": {
@@ -312,7 +382,7 @@
   },
   "log": {
     "disabled": false,
-    "level": "warn",
+    "level": "info",
     "timestamp": true
   }
 }
