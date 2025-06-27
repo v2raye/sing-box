@@ -265,37 +265,40 @@
       "tag": "Google",
       "type": "selector",
       "outbounds": [
+        "Proxy",        
         "Hong Kong",
         "Taiwan",
         "Japan",
         "Singapore",
         "United States"
       ],
-      "default": "United States"
+      "default": "Proxy"
     },
     {
       "tag": "Youtube",
       "type": "selector",
       "outbounds": [
+        "Proxy",
         "Hong Kong",
         "Taiwan",
         "Japan",
         "Singapore",
         "United States"
       ],
-      "default": "United States"
+      "default": "Proxy"
     },
     {
       "tag": "Telegram",
       "type": "selector",
       "outbounds": [
+        "Proxy",
         "Hong Kong",
         "Taiwan",
         "Japan",
         "Singapore",
         "United States"
       ],
-      "default": "United States"
+      "default": "Proxy"
     },
     {
       "tag": "OpenAI",
@@ -308,6 +311,14 @@
         "United States"
       ],
       "default": "United States"
+    },
+    {
+      "tag": "GLOBAL",
+      "type": "selector",
+      "outbounds": [
+        "direct",
+        "Proxy"
+      ]
     },
     {
       "tag": "final",
