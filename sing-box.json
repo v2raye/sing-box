@@ -310,6 +310,15 @@
       "default": "United States"
     },
     {
+      "tag": "final",
+      "type": "selector",
+      "outbounds": [
+        "direct",
+        "Proxy"
+      ],
+      "default": "Proxy"
+    },
+    {
       "tag": "Hong Kong",
       "type": "selector",
       "outbounds": []
