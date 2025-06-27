@@ -288,6 +288,20 @@
       "default": "Proxy"
     },
     {
+      "tag": "Apple",
+      "type": "selector",
+      "outbounds": [
+        "Proxy",
+        "direct",
+        "Hong Kong",
+        "Taiwan",
+        "Japan",
+        "Singapore",
+        "United States"
+      ],
+      "default": "direct"
+    },    
+    {
       "tag": "Telegram",
       "type": "selector",
       "outbounds": [
