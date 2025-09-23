@@ -184,7 +184,28 @@
       "route_address": ["0.0.0.0/0","::/0"],
       "strict_route": true,
       "sniff": true,
-      "sniff_override_destination": false
+      "sniff_override_destination": false,
+      "mtu": 1400
+    },
+    {
+      "type": "socks",
+      "tag": "socks-in",
+      "listen": "127.0.0.1",
+      "listen_port": 7890,
+      "sniff": true
+    },
+    {
+      "type": "http",
+      "tag": "http-in",
+      "listen": "127.0.0.1",
+      "listen_port": 7891,
+      "sniff": true
+    },
+    {
+      "type": "dns",
+      "tag": "dns-in",
+      "listen": "127.0.0.1",
+      "listen_port": 53
     }
   ],
   "experimental": {
