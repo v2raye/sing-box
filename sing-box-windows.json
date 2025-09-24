@@ -61,6 +61,7 @@
   },
 
   "route": {
+    "default_domain_resolver": "ali",
     "rules": [
       {
         "action": "sniff",
@@ -255,7 +256,9 @@
     { "tag": "Singapore", "type": "selector", "outbounds": [] },
     { "tag": "United States", "type": "selector", "outbounds": [] },
     { "tag": "Europe", "type": "selector", "outbounds": [] },
-    { "tag": "Enet", "type": "selector", "outbounds": [] }
+    { "tag": "Enet", "type": "selector", "outbounds": [] },
+    { "tag": "direct", "type": "direct" },
+    { "tag": "block", "type": "block" }
   ],
 
   "inbounds": [
