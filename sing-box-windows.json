@@ -2,41 +2,69 @@
   "dns": {
     "servers": [
       {
-        "type": "tls",
-        "server": "8.8.8.8",
-        "detour": "Proxy",
-        "tag": "google"
-      },
-      {
+        "tag": "google",
         "type": "https",
-        "server": "223.5.5.5",
-        "tag": "local"
+        "server": "https://dns.google/dns-query",
+        "detour": "Proxy"
       },
       {
-        "tag": "block",
-        "type": "hosts",
-        "path": [],
-        "predefined": {}
+        "tag": "ali",
+        "type": "https",
+        "server": "https://223.5.5.5/dns-query"
       },
       {
-        "type": "local"
+        "tag": "fakeip",
+        "type": "fakeip",
+        "inet4_range": "198.18.0.0/15",
+        "inet6_range": "fc00::/18"
       }
     ],
     "rules": [
-      { "rule_set": "geosite-cn", "server": "local" },
-      { "rule_set": "geoip-cn", "server": "local" },
-      { "rule_set": "geosite-!cn", "server": "google" }
+      {
+        "clash_mode": "Direct",
+        "action": "route",
+        "server": "ali"
+      },
+      {
+        "clash_mode": "Global",
+        "action": "route",
+        "server": "fakeip"
+      },
+      {
+        "query_type": ["HTTPS"],
+        "action": "reject"
+      },
+      {
+        "query_type": ["A", "AAAA"],
+        "action": "route",
+        "server": "fakeip",
+        "rewrite_ttl": 1
+      },
+      { "rule_set": "geosite-cn", "action": "route", "server": "ali" },
+      { "rule_set": "geoip-cn", "action": "route", "server": "ali" },
+      { "rule_set": "geosite-!cn", "action": "route", "server": "google" }
     ],
-    "strategy": "prefer_ipv4",
     "independent_cache": true,
     "final": "local"
   },
 
   "route": {
     "rules": [
-      { "action": "sniff" },
-      { "protocol": "dns", "action": "hijack-dns" },
-      { "ip_is_private": true, "outbound": "direct" },
+      {
+        "action": "sniff",
+        "sniffer": ["http", "tls", "quic", "dns"],
+        "timeout": "500ms"
+      },
+      {
+        "type": "logical",
+        "mode": "or",
+        "rules": [
+          { "port": 53 },
+          { "protocol": "dns" }
+        ],
+        "action": "hijack-dns"
+      },
+      { "ip_is_private": true, "action": "route", "outbound": "direct" },
       {
         "domain": [
           "clash.razord.top",
@@ -44,13 +72,15 @@
           "yacd.haishan.me",
           "d.metacubex.one"
         ],
+        "action": "route",
         "outbound": "direct"
       },
       {
         "domain": ["hxd.as174.com", "emby.as174.com", "media.micu.hk", "rfc.uhdnow.com"],
+        "action": "route",
         "outbound": "Emby"
       },
-      { "rule_set": "geosite-openai", "outbound": "OpenAI" },
+      { "rule_set": "geosite-openai", "action": "route", "outbound": "OpenAI" },
       {
         "ip_cidr": [
           "149.154.160.0/20",
@@ -59,21 +89,24 @@
           "2001:67c:4e8::/48",
           "2001:b28:f23c::/48"
         ],
+        "action": "route",
         "outbound": "Europe"
       },
       {
         "ip_cidr": ["91.108.12.0/22", "2001:b28:f23d::/48"],
+        "action": "route",
         "outbound": "United States"
       },
       {
         "ip_cidr": ["91.108.16.0/22", "91.108.56.0/22", "2001:b28:f23f::/48"],
+        "action": "route",
         "outbound": "Singapore"
       },
-      { "rule_set": "geosite-netflix", "outbound": "NETFLIX" },
-      { "rule_set": "geosite-apple", "outbound": "Apple" },
-      { "rule_set": "geosite-microsoft", "outbound": "Microsoft" },
-      { "rule_set": "geosite-!cn", "outbound": "Proxy" },
-      { "rule_set": ["geosite-cn", "geoip-cn"], "outbound": "direct" }
+      { "rule_set": "geosite-netflix", "action": "route", "outbound": "NETFLIX" },
+      { "rule_set": "geosite-apple", "action": "route", "outbound": "Apple" },
+      { "rule_set": "geosite-microsoft", "action": "route", "outbound": "Microsoft" },
+      { "rule_set": "geosite-!cn", "action": "route", "outbound": "Proxy" },
+      { "rule_set": ["geosite-cn", "geoip-cn"], "action": "route", "outbound": "direct" }
     ],
     "auto_detect_interface": true,
     "final": "Proxy",
