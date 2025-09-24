@@ -22,7 +22,7 @@
         "type": "local"
       }
     ],
-    "rules": [      
+    "rules": [
       { "rule_set": "geosite-cn", "server": "local" },
       { "rule_set": "geoip-cn", "server": "local" },
       { "rule_set": "geosite-!cn", "server": "google" }
@@ -34,13 +34,8 @@
 
   "route": {
     "rules": [
-      {
-        "action": "sniff"
-      },
-      {
-        "protocol": "dns",
-        "action": "hijack-dns"
-      },
+      { "action": "sniff" },
+      { "protocol": "dns", "action": "hijack-dns" },
       { "ip_is_private": true, "outbound": "direct" },
       {
         "domain": [
@@ -51,18 +46,27 @@
         ],
         "outbound": "direct"
       },
-      { "domain": ["hxd.as174.com", "emby.as174.com", "media.micu.hk", "rfc.uhdnow.com"], "outbound": "Emby" },
+      {
+        "domain": ["hxd.as174.com", "emby.as174.com", "media.micu.hk", "rfc.uhdnow.com"],
+        "outbound": "Emby"
+      },
       { "rule_set": "geosite-openai", "outbound": "OpenAI" },
       {
-        "ip_cidr": ["149.154.160.0/20","91.108.4.0/22","91.108.8.0/22","2001:67c:4e8::/48","2001:b28:f23c::/48"],
+        "ip_cidr": [
+          "149.154.160.0/20",
+          "91.108.4.0/22",
+          "91.108.8.0/22",
+          "2001:67c:4e8::/48",
+          "2001:b28:f23c::/48"
+        ],
         "outbound": "Europe"
       },
       {
-        "ip_cidr": ["91.108.12.0/22","2001:b28:f23d::/48"],
+        "ip_cidr": ["91.108.12.0/22", "2001:b28:f23d::/48"],
         "outbound": "United States"
       },
       {
-        "ip_cidr": ["91.108.16.0/22","91.108.56.0/22","2001:b28:f23f::/48"],
+        "ip_cidr": ["91.108.16.0/22", "91.108.56.0/22", "2001:b28:f23f::/48"],
         "outbound": "Singapore"
       },
       { "rule_set": "geosite-netflix", "outbound": "NETFLIX" },
@@ -137,29 +141,29 @@
     {
       "tag": "Proxy",
       "type": "selector",
-      "outbounds": ["Hong Kong","Taiwan","Japan","Singapore","United States","direct"]
+      "outbounds": ["Hong Kong", "Taiwan", "Japan", "Singapore", "United States", "direct"]
     },
     {
       "tag": "Apple",
       "type": "selector",
-      "outbounds": ["direct","Proxy","Hong Kong","Taiwan","Japan","Singapore","United States"]
+      "outbounds": ["direct", "Proxy", "Hong Kong", "Taiwan", "Japan", "Singapore", "United States"]
     },
     {
       "tag": "NETFLIX",
       "type": "selector",
-      "outbounds": ["Hong Kong","Taiwan","Japan","Singapore","United States"],
+      "outbounds": ["Hong Kong", "Taiwan", "Japan", "Singapore", "United States"],
       "default": "Singapore"
     },
     {
       "tag": "Microsoft",
       "type": "selector",
-      "outbounds": ["direct","Hong Kong","Taiwan","Japan","Singapore","United States"],
+      "outbounds": ["direct", "Hong Kong", "Taiwan", "Japan", "Singapore", "United States"],
       "default": "direct"
     },
     {
       "tag": "OpenAI",
       "type": "selector",
-      "outbounds": ["Hong Kong","Taiwan","Japan","Singapore","United States"],
+      "outbounds": ["Hong Kong", "Taiwan", "Japan", "Singapore", "United States"],
       "default": "United States"
     },
     {
