@@ -56,7 +56,7 @@
 
   "route": {
     "auto_detect_interface": true,
-    "default_domain_resolver": "dns_direct"，
+    "default_domain_resolver": "dns_direct",
     "rules": [
       {
         "action": "sniff"
