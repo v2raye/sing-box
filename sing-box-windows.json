@@ -62,6 +62,7 @@
   "route": {
     "auto_detect_interface": true,
     "default_domain_resolver": "dns_direct",
+    "final": "Proxy",
     "rules": [
       {
         "action": "sniff"
@@ -126,11 +127,6 @@
         "outbound": "Singapore"
       },
       {
-        "rule_set": "geosite-netflix",
-        "action": "route",
-        "outbound": "NETFLIX"
-      },
-      {
         "rule_set": "geosite-apple",
         "action": "route",
         "outbound": "Apple"
@@ -157,14 +153,6 @@
         "type": "remote",
         "format": "binary",
         "url": "https://raw.githubusercontent.com/217heidai/adblockfilters/main/rules/adblocksingbox.srs",
-        "download_detour": "Proxy",
-        "update_interval": "1d"
-      }, 
-      {
-        "tag": "geosite-netflix",
-        "type": "remote",
-        "format": "binary",
-        "url": "https://raw.githubusercontent.com/SagerNet/sing-geosite/rule-set/geosite-netflix.srs",
         "download_detour": "Proxy",
         "update_interval": "1d"
       },
@@ -251,7 +239,7 @@
     {
       "tag": "Emby",
       "type": "selector",
-      "outbounds": ["Enet"]
+      "outbounds": ["Video"]
     },
     { "tag": "Hong Kong", "type": "selector", "outbounds": [] },
     { "tag": "Taiwan","type": "selector", "outbounds": [] },
@@ -259,14 +247,14 @@
     { "tag": "Singapore", "type": "selector", "outbounds": [] },
     { "tag": "United States","type": "selector", "outbounds": [] },
     { "tag": "Europe", "type": "selector", "outbounds": [] },
-    { "tag": "Enet", "type": "selector", "outbounds": [] },
+    { "tag": "Video", "type": "selector", "outbounds": [] },
     { "tag": "direct", "type": "direct" },
     { "tag": "block", "type": "block" }
   ],
 
   "inbounds": [
     {
-      "address": ["172.18.0.1/30", "fdfe:dcba:9876::1/126"],
+      "address": ["172.18.0.1/30", "fdfe:abcd:1234::1/126"],
       "route_address": ["0.0.0.0/1", "128.0.0.0/1", "::/1", "8000::/1"],
       "route_exclude_address": [
         "192.168.0.0/16",
@@ -289,14 +277,6 @@
   ],
 
   "experimental": {
-    "clash_api": {
-      "external_controller": "127.0.0.1:9090",
-      "external_ui": "ui",
-      "secret": "",
-      "external_ui_download_url": "https://github.com/Zephyruso/zashboard/releases/latest/download/dist.zip",
-      "external_ui_download_detour": "Proxy",
-      "default_mode": "rule"
-    },
     "cache_file": {
       "enabled": true,
       "store_fakeip": true,
