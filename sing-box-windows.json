@@ -20,10 +20,6 @@
       },
       {
         "type": "local"
-      },
-      {
-        "rule_set": ["adblocksingbox"],
-        "server": "block"
       }
     ],
     "rules": [
@@ -51,6 +47,11 @@
         "rule_set": "geosite-!cn",
         "action": "route",
         "server": "dns_proxy"
+      },
+      {
+        "rule_set": ["adblocksingbox"],
+        "action": "route",
+        "server": "block"
       }
     ],
     "independent_cache": true,
