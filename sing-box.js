@@ -20,7 +20,7 @@ const tagRegexMap = {
   'Singapore': /^(?!.*(?:us)).*(新|sg|singapore|🇸🇬)/i,
   'United States': /美|us|unitedstates|united states|🇺🇸/i,
   'Europe': /德国|法国|英国|荷兰|de|fr|gb|nl|germany|france|Great Britain|nederland|🇩🇪|🇫🇷|🇬🇧|🇳🇱/i,
-  'Enet': /Enet/i
+  'Video': /(DlerCloud.*(香港|hk|hong ?kong|🇭🇰|美国|us|united ?states|🇺🇸|日本|jp|japan|🇯🇵))|((香港|美国|日本).*(DlerCloud))/i
 };
 
 config.outbounds.forEach(outbound => {
