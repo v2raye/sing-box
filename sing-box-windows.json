@@ -219,12 +219,6 @@
       "outbounds": ["direct", "Proxy", "Hong Kong", "Taiwan", "Japan", "Singapore", "United States"]
     },
     {
-      "tag": "NETFLIX",
-      "type": "selector",
-      "outbounds": ["Hong Kong", "Taiwan", "Japan", "Singapore", "United States"],
-      "default": "Singapore"
-    },
-    {
       "tag": "Microsoft",
       "type": "selector",
       "outbounds": ["direct", "Hong Kong", "Taiwan", "Japan", "Singapore", "United States"],
