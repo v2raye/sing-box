@@ -20,6 +20,10 @@
       },
       {
         "type": "local"
+      },
+      {
+        "rule_set": ["adblocksingbox"],
+        "server": "block"
       }
     ],
     "rules": [
@@ -64,6 +68,10 @@
       {
         "protocol": "dns",
         "action": "hijack-dns"
+      },
+      {
+        "rule_set": "adblocksingbox",
+        "action": "reject"
       },
       {
         "ip_is_private": true,
@@ -143,6 +151,14 @@
       }
     ],
     "rule_set": [
+      {
+        "tag": "adblocksingbox",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://raw.githubusercontent.com/217heidai/adblockfilters/main/rules/adblocksingbox.srs",
+        "download_detour": "Proxy",
+        "update_interval": "1d"
+      }, 
       {
         "tag": "geosite-netflix",
         "type": "remote",
@@ -273,7 +289,7 @@
 
   "experimental": {
     "clash_api": {
-      "external_controller": "127.0.0.1:9091",
+      "external_controller": "127.0.0.1:9090",
       "external_ui": "ui",
       "secret": "",
       "external_ui_download_url": "https://github.com/Zephyruso/zashboard/releases/latest/download/dist.zip",
