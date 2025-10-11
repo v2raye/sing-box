@@ -1,23 +1,20 @@
 {
 "dns": {
   "servers": [
+    { "tag": "bootstrap", "address": "udp://223.5.5.5" },               // 引导解析器：纯IP，避免递归
     {
       "tag": "dns_proxy",
       "address": "https://dns.google/dns-query",
-      "detour": "Proxy"
+      "detour": "Proxy",
+      "address_resolver": "bootstrap"
     },
     {
       "tag": "dns_direct",
-      "address": "https://dns.alidns.com/dns-query"
+      "address": "https://dns.alidns.com/dns-query",
+      "address_resolver": "bootstrap"
     },
-    {
-      "tag": "block",
-      "address": "rcode://success"
-    },
-    {
-      "tag": "local",
-      "address": "local"
-    }
+    { "tag": "block",  "address": "rcode://success" },                   // v1.12 用 rcode://*
+    { "tag": "local",  "address": "local" }
   ],
   "rules": [
     { "clash_mode": "Direct",  "action": "route", "server": "dns_direct" },
