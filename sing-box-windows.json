@@ -1,25 +1,38 @@
 {
-"dns": {
-  "servers": [
-    { "tag": "bootstrap", "address": "udp://223.5.5.5" },
-    { "tag": "dns_proxy", "address": "https://dns.google/dns-query", "detour": "Proxy", "address_resolver": "bootstrap" },
-    { "tag": "dns_direct", "address": "https://dns.alidns.com/dns-query", "address_resolver": "bootstrap" },
-    { "tag": "block", "address": "rcode://success" },
-    { "tag": "local", "address": "local" }
-  ],
-  "rules": [
-    { "clash_mode": "Direct", "action": "route", "server": "dns_direct" },
-    { "clash_mode": "Global", "action": "route", "server": "dns_proxy" },
-    { "domain_suffix": ["github.com", "githubusercontent.com", "raw.githubusercontent.com", "openai.com", "gstatic.com", "googleapis.com"], "action": "route", "server": "dns_proxy" },
-    { "rule_set": "geosite-cn", "action": "route", "server": "dns_direct" },
-    { "rule_set": "geoip-cn", "action": "route", "server": "dns_direct" },
-    { "rule_set": "geosite-!cn", "action": "route", "server": "dns_proxy" },
-    { "rule_set": ["adblocksingbox"], "action": "route", "server": "block" }
-  ],
-  "independent_cache": true,
-  "strategy": "prefer_ipv4",
-  "final": "dns_proxy"
-},
+  "dns": {
+    "servers": [
+      {
+        "tag": "dns_direct",
+        "type": "https",
+        "server": "223.5.5.5",
+        "server_port": 443,
+        "server_path": "/dns-query",
+        "detour": "direct"
+      },
+      {
+        "tag": "dns_proxy",
+        "type": "https",
+        "server": "8.8.8.8",
+        "server_port": 443,
+        "server_path": "/dns-query",
+        "detour": "Proxy"
+      }
+    ],
+    "rules": [
+      { "clash_mode": "Direct",  "action": "route",  "server": "dns_direct" },
+      { "clash_mode": "Global",  "action": "route",  "server": "dns_proxy"  },
+
+      { "rule_set": "geosite-cn",  "action": "route",  "server": "dns_direct" },
+      { "rule_set": "geoip-cn",    "action": "route",  "server": "dns_direct" },
+      { "rule_set": "geosite-!cn", "action": "route",  "server": "dns_proxy"  },
+
+      /* 广告域名：直接在 DNS 层拒绝，避免把查询丢给一个“hosts”伪服务器 */
+      { "rule_set": ["adblocksingbox"], "action": "reject", "method": "default" }
+    ],
+    "independent_cache": true,
+    "strategy": "prefer_ipv4",
+    "final": "dns_direct"
+  },
 
   "route": {
     "auto_detect_interface": true,
