@@ -25,8 +25,6 @@
       { "rule_set": "geosite-cn",  "action": "route",  "server": "dns_direct" },
       { "rule_set": "geoip-cn",    "action": "route",  "server": "dns_direct" },
       { "rule_set": "geosite-!cn", "action": "route",  "server": "dns_proxy"  },
-
-      /* 广告域名：直接在 DNS 层拒绝，避免把查询丢给一个“hosts”伪服务器 */
       { "rule_set": ["adblocksingbox"], "action": "reject", "method": "default" }
     ],
     "independent_cache": true,
