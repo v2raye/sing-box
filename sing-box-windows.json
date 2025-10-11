@@ -1,41 +1,19 @@
 {
 "dns": {
   "servers": [
-    { "tag": "bootstrap", "address": "223.5.5.5" },               // 引导解析器：纯IP，避免递归
-    {
-      "tag": "dns_proxy",
-      "address": "https://dns.google/dns-query",
-      "detour": "Proxy",
-      "address_resolver": "bootstrap"
-    },
-    {
-      "tag": "dns_direct",
-      "address": "https://dns.alidns.com/dns-query",
-      "address_resolver": "bootstrap"
-    },
-    { "tag": "block",  "address": "rcode://success" },                   // v1.12 用 rcode://*
-    { "tag": "local",  "address": "local" }
+    { "tag": "bootstrap", "address": "udp://223.5.5.5" },
+    { "tag": "dns_proxy", "address": "https://dns.google/dns-query", "detour": "Proxy", "address_resolver": "bootstrap" },
+    { "tag": "dns_direct", "address": "https://dns.alidns.com/dns-query", "address_resolver": "bootstrap" },
+    { "tag": "block", "address": "rcode://success" },
+    { "tag": "local", "address": "local" }
   ],
   "rules": [
-    { "clash_mode": "Direct",  "action": "route", "server": "dns_direct" },
-    { "clash_mode": "Global",  "action": "route", "server": "dns_proxy" },
-
-    {
-      "domain_suffix": [
-        "github.com",
-        "githubusercontent.com",
-        "raw.githubusercontent.com",
-        "openai.com",
-        "gstatic.com",
-        "googleapis.com"
-      ],
-      "action": "route",
-      "server": "dns_proxy"
-    },
-
-    { "rule_set": "geosite-cn",   "action": "route", "server": "dns_direct" },
-    { "rule_set": "geoip-cn",     "action": "route", "server": "dns_direct" },
-    { "rule_set": "geosite-!cn",  "action": "route", "server": "dns_proxy" },
+    { "clash_mode": "Direct", "action": "route", "server": "dns_direct" },
+    { "clash_mode": "Global", "action": "route", "server": "dns_proxy" },
+    { "domain_suffix": ["github.com", "githubusercontent.com", "raw.githubusercontent.com", "openai.com", "gstatic.com", "googleapis.com"], "action": "route", "server": "dns_proxy" },
+    { "rule_set": "geosite-cn", "action": "route", "server": "dns_direct" },
+    { "rule_set": "geoip-cn", "action": "route", "server": "dns_direct" },
+    { "rule_set": "geosite-!cn", "action": "route", "server": "dns_proxy" },
     { "rule_set": ["adblocksingbox"], "action": "route", "server": "block" }
   ],
   "independent_cache": true,
