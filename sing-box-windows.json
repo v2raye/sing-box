@@ -1,7 +1,7 @@
 {
 "dns": {
   "servers": [
-    { "tag": "bootstrap", "address": "udp://223.5.5.5" },               // 引导解析器：纯IP，避免递归
+    { "tag": "bootstrap", "address": "223.5.5.5" },               // 引导解析器：纯IP，避免递归
     {
       "tag": "dns_proxy",
       "address": "https://dns.google/dns-query",
